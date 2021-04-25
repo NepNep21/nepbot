@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="29dd8700-25e8-4e1c-af35-83444b0140c3" name="Default Changelist" comment="Fixed inconsistent shutdown message" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="AnnotationType" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="ProjectId" id="1nCvIeaYLo4Ss5kOgoleDB2iXgy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/build.gradle" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
+    <property name="settings.editor.selected.configurable" value="discord-application" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="me.nepnep.nepbot.message.command.commands.admin" />
+      <recent name="me.nepnep.nepbot.music" />
+      <recent name="me.nepnep.nepbot.message.command.commands.info" />
+      <recent name="me.nepnep.nepbot.message.command.commands" />
+      <recent name="me.nepnep.nepbot.message.command.commands.animals" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle fatJar" />
+      <command value="gradle build" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="me.nepnep.nepbot.Main" />
+      <module name="nepbot.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="nepbot [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="nepbot [fatJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="fatJar" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.nepbot [build]" />
+        <item itemvalue="Gradle.nepbot [fatJar]" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StructuralSearchPlugin">
+    <searchConfiguration name="user defined" created="1613344306804" text="// $CommentContent$" recursive="true" caseInsensitive="true" type="JAVA" pattern_context="default" scope_type="PROJECT" scope_descriptor="" history="1">
+      <constraint name="__context__" within="" contains="" />
+      <constraint name="CommentContent" within="" contains="" />
+    </searchConfiguration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="29dd8700-25e8-4e1c-af35-83444b0140c3" name="Default Changelist" comment="" />
+      <created>1610906808104</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610906808104</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Small format on ping, added lmddgtfy, fixed help">
+      <created>1613525483989</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1613525483989</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Small path modification and steal error handling">
+      <created>1613584245173</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1613584245173</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Renamed xmasrat">
+      <created>1613765687733</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1613765687733</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Renamed xmasrat, fixed help, added bigears">
+      <created>1613766802590</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1613766802590</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Added lewd blacklist">
+      <created>1614021495129</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1614021495129</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Reworked steal command">
+      <created>1614030505847</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1614030505847</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Refactor and added RGBigrat">
+      <created>1614100161346</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1614100161347</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Removed RGBigrat">
+      <created>1614102616712</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1614102616712</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Removed unnecessary constant and small refactor">
+      <created>1614204515350</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1614204515350</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Added Randomchimpevent">
+      <created>1614439347306</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1614439347307</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Fixed Steal error reporting">
+      <created>1615048682731</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1615048682731</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Added suggestion">
+      <created>1615050894025</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1615050894025</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Added suggestion to help">
+      <created>1615051358808</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1615051358808</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Fixed suggestion args">
+      <created>1615052555797</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1615052555797</updated>
+    </task>
+    <task id="LOCAL-00048" summary="Removed &quot;No you&quot;">
+      <created>1615676891673</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1615676891673</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Removed unnecessary import and added starboard">
+      <created>1615814029691</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1615814029691</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Added ;shut">
+      <created>1615892375526</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1615892375527</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Added private to sendEmbed">
+      <created>1615906865167</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1615906865167</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Command and help rework">
+      <created>1616109676451</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1616109676451</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Moved Category to command package">
+      <created>1616161592938</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1616161592941</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Rewrote and added new checks to Starboard">
+      <created>1616167449308</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1616167449308</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Fixed Starboard">
+      <created>1616170935328</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1616170935328</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Fixed Starboard again">
+      <created>1616172398616</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1616172398616</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Moved categories">
+      <created>1616268521560</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1616268521560</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Rewrote WhoIs and added semen to lewd">
+      <created>1616362235326</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1616362235326</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Fixed Messages by removing regex">
+      <created>1616371773622</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1616371773623</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Added list size check to  Http">
+      <created>1616446741712</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1616446741713</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Added penis to lewd">
+      <created>1616541449293</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1616541449293</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Add last build">
+      <created>1616584169637</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1616584169637</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Silenced Ping stacktrace">
+      <created>1616595976839</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1616595976839</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Added attachment to Starboard">
+      <created>1616601266037</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1616601266037</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Potentially dumb Starboard fix">
+      <created>1616784506812</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1616784506815</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Actual Starboard fix">
+      <created>1616787658723</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1616787658724</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Added ;pfp">
+      <created>1616798069959</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1616798069960</updated>
+    </task>
+    <task id="LOCAL-00068" summary="Updated JDA">
+      <created>1616936088803</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1616936088804</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Added @Override">
+      <created>1616960003764</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1616960003765</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Added Override">
+      <created>1616960279718</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1616960279719</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Added Category.INFO and experimental mcsrv">
+      <created>1617037503582</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1617037503582</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Added BotInfo">
+      <created>1617062905064</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1617062905064</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Added logging">
+      <created>1617198299995</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1617198299995</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Fixed BotInfo Total Users">
+      <created>1617276681503</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1617276681504</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Changed mongodb logging level to WARN">
+      <created>1617297433883</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1617297433883</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Added experimental ;urban">
+      <created>1617307419413</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1617307419413</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Added simple filtering to UrbanDictionary and MinecraftServer">
+      <created>1617309313613</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1617309313614</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Added BottomCommand">
+      <created>1617496888369</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1617496888369</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Removed BigCat">
+      <created>1617572152088</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1617572152089</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Added LeaveMessage">
+      <created>1617741130700</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1617741130700</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Added JoinMessage">
+      <created>1617827562474</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1617827562474</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Fixed inconsistent shutdown message">
+      <created>1619092851129</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1619092851131</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Rewrote WhoIs and added semen to lewd" />
+    <MESSAGE value="Fixed Messages by removing regex" />
+    <MESSAGE value="Added list size check to  Http" />
+    <MESSAGE value="Added penis to lewd" />
+    <MESSAGE value="Add last build" />
+    <MESSAGE value="Silenced Ping stacktrace" />
+    <MESSAGE value="Added attachment to Starboard" />
+    <MESSAGE value="Potentially dumb Starboard fix" />
+    <MESSAGE value="Actual Starboard fix" />
+    <MESSAGE value="Added ;pfp" />
+    <MESSAGE value="Updated JDA" />
+    <MESSAGE value="Added @Override" />
+    <MESSAGE value="Added Override" />
+    <MESSAGE value="Added Category.INFO and experimental mcsrv" />
+    <MESSAGE value="Added BotInfo" />
+    <MESSAGE value="Added logging" />
+    <MESSAGE value="Fixed BotInfo Total Users" />
+    <MESSAGE value="Changed mongodb logging level to WARN" />
+    <MESSAGE value="Added experimental ;urban" />
+    <MESSAGE value="Added simple filtering to UrbanDictionary and MinecraftServer" />
+    <MESSAGE value="Added BottomCommand" />
+    <MESSAGE value="Removed BigCat" />
+    <MESSAGE value="Added LeaveMessage" />
+    <MESSAGE value="Added JoinMessage" />
+    <MESSAGE value="Fixed inconsistent shutdown message" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed inconsistent shutdown message" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

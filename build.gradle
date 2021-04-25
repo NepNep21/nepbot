@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group 'me.nepnep.nepbot'
+version '1.04.22'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'm2-dv8tion'
+        url 'https://m2.dv8tion.net/releases'
+    }
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'net.dv8tion:JDA:4.2.1_255'
+    implementation 'org.mongodb:mongodb-driver-sync:4.1.1'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.12.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.0'
+    implementation 'ch.qos.logback:logback-classic:1.3.0-alpha5'
+    implementation 'com.github.bottom-software-foundation:bottom-java:v2.1.0'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'me.nepnep.nepbot.Main'
+        )
+    }
+    from {
+        configurations
+                .runtimeClasspath
+                .findAll { !it.name.endsWith('pom') }
+                .collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
