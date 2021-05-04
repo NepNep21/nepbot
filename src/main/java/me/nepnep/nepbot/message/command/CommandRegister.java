@@ -55,6 +55,7 @@ public class CommandRegister {
         register(new RemoveBottomWhiteList());
         register(new JoinMessage());
         register(new Shutdown());
+        register(new TinyCat());
     }
     private static void register(ICommand command) {
         if (!REGISTER.containsKey(command.getInvoke())) {
