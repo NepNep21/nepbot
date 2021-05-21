@@ -1,6 +1,6 @@
 package me.nepnep.nepbot;
 
-import me.nepnep.nepbot.json.Util;
+import me.nepnep.nepbot.database.StarboardDatabase;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Message;
@@ -19,8 +19,7 @@ public class Starboard extends ListenerAdapter {
         List<TextChannel> starboards = event.getGuild().getTextChannelsByName("starboard", false);
         if (starboards.size() >= 1) {
             TextChannel starboard = starboards.get(0);
-            List<Long> messages = Util.readListFromJsonArray("starboard.json");
-            if (!(messages.contains(event.getMessageIdLong()) || event.getChannel().equals(starboard)) && event.getGuild().getSelfMember().hasPermission(starboard, Permission.MESSAGE_WRITE)) {
+            if (!(StarboardDatabase.hasMessage(event.getMessageIdLong())) || event.getChannel().equals(starboard) && event.getGuild().getSelfMember().hasPermission(starboard, Permission.MESSAGE_WRITE)) {
                 Optional<MessageReaction> optional = event.retrieveMessage()
                         .map(Message::getReactions)
                         .complete()
@@ -49,8 +48,7 @@ public class Starboard extends ListenerAdapter {
                             builder.setImage(attachments.get(0).getUrl());
                         }
 
-                        messages.add(message.getIdLong());
-                        Util.writeListToJsonArray(messages, "starboard.json");
+                        StarboardDatabase.addMessage(event.getMessageIdLong());
 
                         starboard.sendMessage(builder.build()).queue();
                     }

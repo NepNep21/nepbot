@@ -1,8 +1,8 @@
 package me.nepnep.nepbot.message.command.commands.admin;
 
-import me.nepnep.nepbot.Database;
-import me.nepnep.nepbot.message.command.ICommand;
+import me.nepnep.nepbot.database.DefaultRoleDatabase;
 import me.nepnep.nepbot.message.command.Category;
+import me.nepnep.nepbot.message.command.ICommand;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Role;
@@ -19,7 +19,7 @@ public class GiveDefaultRole implements ICommand {
 
         try {
             List<Member> noRole = new ArrayList<>();
-            Role role = event.getGuild().getRolesByName(Database.read(event.getGuild()), false).get(0);
+            Role role = event.getGuild().getRolesByName(DefaultRoleDatabase.getDefaultRole(event.getGuild()), false).get(0);
 
             for (Member member : members) {
                 if (member.getRoles().isEmpty()) {

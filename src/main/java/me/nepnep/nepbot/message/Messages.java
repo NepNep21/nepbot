@@ -1,6 +1,6 @@
 package me.nepnep.nepbot.message;
 
-import me.nepnep.nepbot.json.LewdBlackList;
+import me.nepnep.nepbot.database.BlackListDatabase;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -14,7 +14,7 @@ public class Messages extends ListenerAdapter {
 
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        boolean shouldSend = !LewdBlackList.getList().contains(event.getChannel().getIdLong());
+        boolean shouldSend = !BlackListDatabase.isInBlackList(event.getChannel().getIdLong());
         try {
             TextChannel channel = event.getChannel();
             String content = event.getMessage().getContentRaw().toLowerCase();

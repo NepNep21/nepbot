@@ -1,8 +1,8 @@
 package me.nepnep.nepbot.message.command.commands.admin;
 
-import me.nepnep.nepbot.Database;
-import me.nepnep.nepbot.message.command.ICommand;
+import me.nepnep.nepbot.database.DefaultRoleDatabase;
 import me.nepnep.nepbot.message.command.Category;
+import me.nepnep.nepbot.message.command.ICommand;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Role;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
@@ -15,7 +15,7 @@ public class SetDefaultRole implements ICommand {
         if (event.getMessage().getMentionedRoles().size() != 0) {
             Role role = event.getMessage().getMentionedRoles().get(0);
 
-            Database.write(event.getGuild(), role.getName());
+            DefaultRoleDatabase.setDefaultRole(event.getGuild(), role.getName());
         } else {
             event.getChannel().sendMessage("Please mention a role").queue();
         }

@@ -2,7 +2,7 @@ package me.nepnep.nepbot.message.command.commands.fun;
 
 import com.github.bottomSoftwareFoundation.bottom.Bottom;
 import com.github.bottomSoftwareFoundation.bottom.TranslationError;
-import me.nepnep.nepbot.json.BottomWhiteList;
+import me.nepnep.nepbot.database.WhiteListDatabase;
 import me.nepnep.nepbot.message.command.Category;
 import me.nepnep.nepbot.message.command.ICommand;
 import net.dv8tion.jda.api.Permission;
@@ -15,7 +15,7 @@ public class BottomCommand implements ICommand {
     @Override
     public void execute(List<String> args, GuildMessageReceivedEvent event) {
         TextChannel channel = event.getChannel();
-        if (BottomWhiteList.getList().contains(event.getChannel().getIdLong()) && args.size() >= 2) {
+        if (WhiteListDatabase.isInWhiteList(channel.getIdLong()) && args.size() >= 2) {
             String string = String.join(" ", args.subList(1, args.size()));
 
             try {
