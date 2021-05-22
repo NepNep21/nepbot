@@ -4,25 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29dd8700-25e8-4e1c-af35-83444b0140c3" name="Default Changelist" comment="Added TinyCat">
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/BlackListDatabase$DocumentObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/BlackListDatabase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/Database.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/DefaultRoleDatabase$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/DefaultRoleDatabase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/JoinMessageDatabase$DocumentObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/JoinMessageDatabase$JoinMessageObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/JoinMessageDatabase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/StarboardDatabase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/WhiteListDatabase$DocumentObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/WhiteListDatabase.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/libs/nepbot-1.05.21.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/database/BlackListDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/database/Database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/database/DefaultRoleDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/database/JoinMessageDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/database/StarboardDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/database/WhiteListDatabase.java" afterDir="false" />
+    <list default="true" id="29dd8700-25e8-4e1c-af35-83444b0140c3" name="Default Changelist" comment="Switch to mongodb">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -30,45 +13,129 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.2.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/Database.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/DefaultRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/DefaultRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/JoinMessage$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/JoinMessage$JSONObject.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/JoinMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/JoinMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/Starboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/Starboard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/json/BottomWhiteList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/json/LewdBlackList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/json/Util$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/json/Util.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/Messages.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/Messages.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/BottomWhiteListCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/BottomWhiteListCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/GiveDefaultRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/GiveDefaultRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/JoinMessage$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/JoinMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/JoinMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/LewdBlackListCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/LewdBlackListCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/RemoveBottomWhiteList.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/RemoveBottomWhiteList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/RemoveLewdBlackList.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/RemoveLewdBlackList.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/SetDefaultRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/SetDefaultRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/fun/BottomCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/fun/BottomCommand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/Database.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/DefaultRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/DefaultRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/JoinMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/JoinMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/Starboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/Starboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/json/BottomWhiteList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/json/LewdBlackList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/json/Util.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/Messages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/BottomWhiteListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/BottomWhiteListCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/GiveDefaultRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/GiveDefaultRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/JoinMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/JoinMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/LewdBlackListCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/LewdBlackListCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/RemoveBottomWhiteList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/RemoveBottomWhiteList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/RemoveLewdBlackList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/RemoveLewdBlackList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/SetDefaultRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/admin/SetDefaultRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/fun/BottomCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/fun/BottomCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/DefaultRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/JoinMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/LeaveMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/Networking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/Starboard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/BlackListDatabase$DocumentObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/BlackListDatabase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/Database.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/DefaultRoleDatabase$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/DefaultRoleDatabase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/JoinMessageDatabase$DocumentObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/JoinMessageDatabase$JoinMessageObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/JoinMessageDatabase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/StarboardDatabase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/WhiteListDatabase$DocumentObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/database/WhiteListDatabase.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/Messages.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/Category.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/CommandRegister.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/CommandResponder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/ICommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/Help.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/Ping.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/Shutdown.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/Suggestion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/BottomWhiteListCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/GiveDefaultRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/JoinMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/LewdBlackListCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/RemoveBottomWhiteList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/RemoveLewdBlackList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/SetDefaultRole.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/admin/Steal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/animals/BigDog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/animals/BigEars.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/animals/BigMonkey.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/animals/BigRat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/animals/BigSnail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/animals/Http.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/animals/RandomChimpEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/animals/Shut.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/animals/TinyCat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/animals/TinyRat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/animals/TinySnail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/animals/XmasRat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/fun/BottomCommand.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/fun/Lmddgtfy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/fun/Stat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/fun/Xkcd.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/info/BotInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/info/MinecraftServer$JSONObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/info/MinecraftServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/info/ProfilePicture.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/info/UrbanDictionary$JSONObject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/info/UrbanDictionary.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/info/WhoIs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/mod/Ban.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/mod/Kick.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/mod/Mute.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/mod/Purge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/me/nepnep/nepbot/message/command/commands/mod/Unmute.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.07.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.08.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.13.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.13_2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.17.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.19.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.22_2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.23.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.23_2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.24.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.02.27.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.02.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.06.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.06_2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.06_3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.06_4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.13.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.16.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.16_2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.18.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.19.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.19_2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.19_3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.19_4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.20.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.21.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.21_2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.23.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.24.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.24_2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.26.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.26_2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.26_3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.28.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.29.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.29_2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.03.31.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.04.01.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.04.01_2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.04.01_3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.04.01_4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.04.02.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.04.03.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.04.04.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.04.06.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.04.07.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.04.08.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.04.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.05.04.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/nepbot-1.05.21.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/info/UrbanDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/me/nepnep/nepbot/message/command/commands/info/UrbanDictionary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,13 +282,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1610906808104</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Small path modification and steal error handling">
-      <created>1613584245173</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1613584245173</updated>
     </task>
     <task id="LOCAL-00036" summary="Renamed xmasrat">
       <created>1613765687733</created>
@@ -559,7 +619,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620136152523</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Switch to mongodb">
+      <created>1621619319428</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1621619319429</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -575,7 +642,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed Messages by removing regex" />
     <MESSAGE value="Added list size check to  Http" />
     <MESSAGE value="Added penis to lewd" />
     <MESSAGE value="Add last build" />
@@ -600,7 +666,8 @@
     <MESSAGE value="Added JoinMessage" />
     <MESSAGE value="Fixed inconsistent shutdown message" />
     <MESSAGE value="Added TinyCat" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added TinyCat" />
+    <MESSAGE value="Switch to mongodb" />
+    <option name="LAST_COMMIT_MESSAGE" value="Switch to mongodb" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

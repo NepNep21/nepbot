@@ -1,5 +1,4 @@
-blacklist/
-starboard.json
 logs/
-whitelist/
-joinMessage.json
+build/
+.gradle/
+.idea/
