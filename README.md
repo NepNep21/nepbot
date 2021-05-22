@@ -19,4 +19,6 @@ Due to my shitcode, you have to initialize the "Misc" collection with a document
 
 ![Document](https://github.com/Lolicon2110/nepbot/blob/main/.github/document.png?raw=true)
 
+Create a file in the same directory as the bot, and create a file called "config.json", inside of it should be a single field called "operator", and its value should be your discord id
+
 Make sure you have java installed, and then run the bot with "java -jar fileName.jar"
