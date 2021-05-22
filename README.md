@@ -1,10 +1,10 @@
 Nepbot is the first project i ever made, so be prepared for shitcode!
 
-#Building
+# Building
 
 Just run "./gradlew build", the resulting binary will be in build/libs/ and will contain all libraries
 
-#Using
+# Using
 
 This bot uses 2 environment variables: 
 
@@ -17,6 +17,6 @@ Your database should be called Nepbot and have 2 collections, one called "Guilds
 
 Due to my shitcode, you have to initialize the "Misc" collection with a document, the structure should be this:
 
-![Document](https://github.com/Lolicon2110/Nepbot/blob/main/.github/document.png?raw=true)
+![Document](https://github.com/Lolicon2110/nepbot/blob/main/.github/document.png?raw=true)
 
 Make sure you have java installed, and then run the bot with "java -jar fileName.jar"
