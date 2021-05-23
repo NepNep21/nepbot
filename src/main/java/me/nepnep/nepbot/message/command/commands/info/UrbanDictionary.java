@@ -54,6 +54,8 @@ public class UrbanDictionary implements ICommand {
                 channel.sendMessage(builder.build()).queue();
             } catch (IOException e) {
                 channel.sendMessage("API Issues, try again later.").queue();
+            } catch (IllegalArgumentException e) {
+                channel.sendMessage("Embed is too large!").queue();
             } finally {
                 if (body != null) {
                     body.close();
