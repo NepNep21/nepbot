@@ -7,10 +7,14 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.MemberCachePolicy;
+import okhttp3.OkHttpClient;
 
 import javax.security.auth.login.LoginException;
 
 public class Main {
+
+    public static final OkHttpClient HTTP_CLIENT = new OkHttpClient();
+
     public static void main(String[] args) throws LoginException {
         String token = System.getenv("BOT_TOKEN");
 

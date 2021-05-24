@@ -2,13 +2,13 @@ package me.nepnep.nepbot.message.command.commands.info;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import me.nepnep.nepbot.Main;
 import me.nepnep.nepbot.message.command.Category;
 import me.nepnep.nepbot.message.command.ICommand;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
-import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.ResponseBody;
 
@@ -27,13 +27,20 @@ public class UrbanDictionary implements ICommand {
             ResponseBody body = null;
             try {
                 String safeQuery = URLEncoder.encode(query, "UTF-8");
-                OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder().url(api + safeQuery).build();
-                body = client.newCall(request).execute().body();
+                body = Main.HTTP_CLIENT.newCall(request).execute().body();
                 ObjectMapper mapper = new ObjectMapper();
 
                 JsonNode json = mapper.readTree(body.string());
-                JsonNode best = json.get("list").get(0);
+                JsonNode list = json.get("list");
+
+                if (list == null) {
+                    body.close();
+                    channel.sendMessage("Not found or unknown error").queue();
+                    return;
+                }
+
+                JsonNode best = list.get(0);
 
                 if (best == null) {
                     body.close();

@@ -2,6 +2,7 @@ package me.nepnep.nepbot.message.command.commands.info;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import me.nepnep.nepbot.Main;
 import me.nepnep.nepbot.message.command.Category;
 import me.nepnep.nepbot.message.command.ICommand;
 import net.dv8tion.jda.api.EmbedBuilder;
@@ -22,9 +23,8 @@ public class MinecraftServer implements ICommand {
             String address = args.get(0);
             String url = "https://api.mcsrvstat.us/2/" + address;
 
-            OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder().url(url).build();
-            Call call = client.newCall(request);
+            Call call = Main.HTTP_CLIENT.newCall(request);
 
             try {
                 Response response = call.execute();
