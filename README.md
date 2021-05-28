@@ -28,7 +28,8 @@ Create a file in the same directory as the bot, and create a file called "config
   "activity": {
     "type": "watching",
     "content": "Nepbot be made"
-  }
+  },
+  "uncalledMessages": false
 }
 ```
 
@@ -36,6 +37,7 @@ Where:
 "operator" is your discord id  
 "reconnectDelay" is the maximum number of seconds you want JDA to wait before attempting a reconnect (min 32)  
 "type" is the type of activity ("watching", "playing", "competing", or "listening")  
-and "content" is the content of the activity
+"content" is the content of the activity  
+"uncalledMessages" is whether actions in "src/main/java/me/nepnep/nepbot/message/Messages.java" should be executed
 
 Make sure you have java installed, and then run the bot with "java -jar fileName.jar"
