@@ -30,6 +30,7 @@ public class StarboardDatabase extends Database {
 
         List<Long> messages = document.getList("starboard", Long.class);
 
+        mongoClient.close();
         return messages.contains(message);
     }
     public static void addMessage(long message) {
@@ -45,5 +46,6 @@ public class StarboardDatabase extends Database {
         Document document = collection.find().first();
 
         collection.findOneAndUpdate(document, Updates.addToSet("starboard", message));
+        client.close();
     }
 }

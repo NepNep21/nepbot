@@ -37,6 +37,7 @@ public class JoinMessageDatabase extends Database {
         guilds.updateOne(Filters.eq("guildId", guildId),
                 Updates.combine(Updates.set("joinMessage.message", message)),
                 new UpdateOptions().upsert(true));
+        client.close();
     }
     public static Map<String, String> getJoinDetails(long guildId) {
         MongoClientSettings settings = MongoClientSettings.builder()
@@ -62,11 +63,13 @@ public class JoinMessageDatabase extends Database {
                 Map<String, String> details = new HashMap<>();
                 details.put("channel", String.valueOf(joinMessage.getChannel()));
                 details.put("message", joinMessage.getMessage());
+                mongoClient.close();
                 return details;
             } catch (JacksonException e) {
                 // Intentionally empty
             }
         }
+        mongoClient.close();
         return null;
     }
 

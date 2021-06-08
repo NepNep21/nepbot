@@ -31,6 +31,7 @@ public class WhiteListDatabase extends Database {
         Document document = collection.find().first();
 
         collection.updateOne(document, Updates.addToSet("whitelist.bottom", channel));
+        client.close();
     }
     public static boolean isInWhiteList(/*String whitelist, when more are added*/long channel) {
         MongoClientSettings settings = MongoClientSettings.builder()
@@ -52,9 +53,10 @@ public class WhiteListDatabase extends Database {
                     .get("bottom"))
                     .boxed()
                     .collect(Collectors.toList());
+            client.close();
             return list.contains(channel);
         } catch (JacksonException e) {
-            e.printStackTrace();
+            client.close();
             return false;
         }
     }
@@ -71,6 +73,7 @@ public class WhiteListDatabase extends Database {
         Document document = collection.find().first();
 
         collection.updateOne(document, Updates.pull("whitelist.bottom", channel));
+        client.close();
     }
     @JsonIgnoreProperties(ignoreUnknown = true)
     private static class DocumentObject {

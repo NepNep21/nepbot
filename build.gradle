@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'me.nepnep.nepbot'
-version '1.05.26'
+version '1.06.08'
 
 sourceCompatibility = 1.8
 

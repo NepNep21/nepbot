@@ -32,6 +32,7 @@ public class BlackListDatabase extends Database {
         Document document = collection.find().first();
 
         collection.updateOne(document, Updates.addToSet("blacklist.lewd", channel));
+        client.close();
     }
     public static boolean isInBlackList(/*String blacklist, when more are added*/long channel) {
         MongoClientSettings settings = MongoClientSettings.builder()
@@ -53,8 +54,10 @@ public class BlackListDatabase extends Database {
                     .get("lewd"))
                     .boxed()
                     .collect(Collectors.toList());
+            client.close();
             return list.contains(channel);
         } catch (JacksonException e) {
+            client.close();
             return true;
         }
     }
@@ -71,6 +74,7 @@ public class BlackListDatabase extends Database {
         Document document = collection.find().first();
 
         collection.updateOne(document, Updates.pull("blacklist.lewd", channel));
+        client.close();
     }
     @JsonIgnoreProperties(ignoreUnknown = true)
     private static class DocumentObject {

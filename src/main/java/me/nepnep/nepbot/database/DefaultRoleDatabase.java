@@ -26,6 +26,7 @@ public class DefaultRoleDatabase extends Database {
 
     public static void setDefaultRole(Guild guild, String role) {
         long guildId = guild.getIdLong();
+        MongoClient mongoClient = null;
 
         try {
 
@@ -34,7 +35,7 @@ public class DefaultRoleDatabase extends Database {
                     .retryWrites(true)
                     .applyToSocketSettings(builder -> builder.connectTimeout(30, TimeUnit.SECONDS))
                     .build();
-            MongoClient mongoClient = MongoClients.create(settings);
+            mongoClient = MongoClients.create(settings);
 
             MongoDatabase database = mongoClient.getDatabase("Nepbot");
 
@@ -46,10 +47,15 @@ public class DefaultRoleDatabase extends Database {
 
         } catch (Exception e) {
             LOGGER.warn("Exception in database", e);
+        } finally {
+            if (mongoClient != null) {
+                mongoClient.close();
+            }
         }
     }
     public static String getDefaultRole(Guild guild) {
         long guildId = guild.getIdLong();
+        MongoClient mongoClient = null;
 
         try {
             MongoClientSettings settings = MongoClientSettings.builder()
@@ -58,7 +64,7 @@ public class DefaultRoleDatabase extends Database {
                     .readPreference(ReadPreference.primaryPreferred())
                     .applyToSocketSettings(builder -> builder.connectTimeout(30, TimeUnit.SECONDS))
                     .build();
-            MongoClient mongoClient = MongoClients.create(settings);
+            mongoClient = MongoClients.create(settings);
 
             MongoDatabase database = mongoClient.getDatabase("Nepbot");
 
@@ -72,9 +78,13 @@ public class DefaultRoleDatabase extends Database {
                 Map<String, Object> map = new ObjectMapper().readValue(first.toJson(), new TypeReference<Map<String, Object>>() {});
                 return map.get("defaultRole").toString();
             }
+            mongoClient.close();
             return null;
         } catch (Exception e) {
             LOGGER.error("Possibly severe exception in database!", e);
+            if (mongoClient != null) {
+                mongoClient.close();
+            }
             return null;
         }
     }
