@@ -20,39 +20,39 @@ public class Starboard extends ListenerAdapter {
         if (starboards.size() >= 1) {
             TextChannel starboard = starboards.get(0);
             if (!(StarboardDatabase.hasMessage(event.getMessageIdLong())) || event.getChannel().equals(starboard) && event.getGuild().getSelfMember().hasPermission(starboard, Permission.MESSAGE_WRITE)) {
-                Optional<MessageReaction> optional = event.retrieveMessage()
-                        .map(Message::getReactions)
-                        .complete()
-                        .stream()
-                        .filter(reaction -> reaction.getReactionEmote().isEmoji())
-                        .filter(reaction -> reaction.getReactionEmote().getEmoji().equals("⭐"))
-                        .findFirst();
-                if (optional.isPresent()) {
-                    MessageReaction stars = optional.get();
-                    User author = event.retrieveMessage().map(Message::getAuthor).complete();
-                    int starCount = !stars.retrieveUsers().complete().contains(author) ? stars.getCount() : stars.getCount() - 1;
+                event.retrieveMessage().queue(message -> {
+                    Optional<MessageReaction> optional = message.getReactions()
+                            .stream()
+                            .filter(reaction -> reaction.getReactionEmote().isEmoji())
+                            .filter(reaction -> reaction.getReactionEmote().getEmoji().equals("⭐"))
+                            .findFirst();
+                    if (optional.isPresent()) {
+                        MessageReaction stars = optional.get();
+                        stars.retrieveUsers().queue(users -> {
+                            User author = message.getAuthor();
+                            int starCount = !users.contains(author) ? stars.getCount() : stars.getCount() - 1;
+                            if (starCount == 3) {
+                                EmbedBuilder builder = new EmbedBuilder();
 
-                    if (starCount == 3) {
-                        EmbedBuilder builder = new EmbedBuilder();
-                        Message message = event.retrieveMessage().complete();
+                                builder.setAuthor(author.getAsTag(), null, author.getAvatarUrl());
 
-                        builder.setAuthor(author.getAsTag(), null, author.getAvatarUrl());
+                                builder.setDescription(String.format("[Context](%s)%n%s", message.getJumpUrl(), message.getContentRaw()));
 
-                        builder.setDescription(String.format("[Context](%s)%n%s", message.getJumpUrl(), message.getContentRaw()));
+                                builder.setTimestamp(message.getTimeCreated());
 
-                        builder.setTimestamp(message.getTimeCreated());
+                                List<Message.Attachment> attachments = message.getAttachments();
 
-                        List<Message.Attachment> attachments = message.getAttachments();
+                                if (attachments.size() >= 1) {
+                                    builder.setImage(attachments.get(0).getUrl());
+                                }
 
-                        if (attachments.size() >= 1) {
-                            builder.setImage(attachments.get(0).getUrl());
-                        }
+                                StarboardDatabase.addMessage(event.getMessageIdLong());
 
-                        StarboardDatabase.addMessage(event.getMessageIdLong());
-
-                        starboard.sendMessage(builder.build()).queue();
+                                starboard.sendMessage(builder.build()).queue();
+                            }
+                        });
                     }
-                }
+                });
             }
         }
     }
