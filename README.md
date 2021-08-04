@@ -17,7 +17,7 @@ Your database should be called Nepbot and have 2 collections, one called "Guilds
 
 Due to my shitcode, you have to initialize the "Misc" collection with a document, the structure should be this:
 
-![Document](https://github.com/Lolicon2110/nepbot/blob/main/.github/document.png?raw=true)
+![Document](https://github.com/NepNep21/nepbot/blob/main/.github/document.png?raw=true)
 
 Create a file in the same directory as the bot, and create a file called "config.json", it should look something like this
 
@@ -38,6 +38,6 @@ Where:
 "reconnectDelay" is the maximum number of seconds you want JDA to wait before attempting a reconnect (min 32)  
 "type" is the type of activity ("watching", "playing", "competing", or "listening")  
 "content" is the content of the activity  
-"uncalledMessages" is whether actions in "src/main/java/me/nepnep/nepbot/message/Messages.java" should be executed
+"uncalledMessages" is whether actions in "src/main/kotlin/me/nepnep/nepbot/message/Messages.java" should be executed
 
 Make sure you have java installed, and then run the bot with "java -jar fileName.jar"
