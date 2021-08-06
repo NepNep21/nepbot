@@ -41,8 +41,14 @@ class MinecraftServer : ICommand {
 
                 val hostname = hostnameJson.textValue()
 
+                val jsonMotd = json["motd"]
+                if (jsonMotd == null) {
+                    channel.sendMessage("Couldn't find server").queue()
+                    return
+                }
+
                 val builder = StringBuilder()
-                json["motd"]["clean"].elements().forEach {
+                jsonMotd["clean"].elements().forEach {
                     builder.append(it.textValue())
                 }
                 val motd = builder.toString()
