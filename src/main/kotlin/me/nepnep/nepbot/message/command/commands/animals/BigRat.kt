@@ -9,15 +9,9 @@ class BigRat : ICommand {
         event.channel.sendMessage("https://bigrat.monster/").queue()
     }
 
-    override fun getInvoke(): String {
-        return "bigrat"
-    }
+    override fun getInvoke() = "bigrat"
 
-    override fun getCategory(): Category {
-        return Category.ANIMALS
-    }
+    override fun getCategory() = Category.ANIMALS
 
-    override fun getDescription(): String {
-        return "A big rat"
-    }
+    override fun getDescription() = "A big rat"
 }

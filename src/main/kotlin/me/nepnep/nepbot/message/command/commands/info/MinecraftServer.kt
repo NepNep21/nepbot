@@ -71,15 +71,9 @@ class MinecraftServer : ICommand {
         })
     }
 
-    override fun getInvoke(): String {
-        return "mcsrv"
-    }
+    override fun getInvoke() = "mcsrv"
 
-    override fun getCategory(): Category {
-        return Category.INFO
-    }
+    override fun getCategory() = Category.INFO
 
-    override fun getDescription(): String {
-        return "Gets a minecraft server's info: ;mcsrv <String address>"
-    }
+    override fun getDescription() = "Gets a minecraft server's info: ;mcsrv <String address>"
 }

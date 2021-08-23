@@ -9,15 +9,9 @@ class Shut : ICommand {
         event.channel.sendMessage("https://shutplea.se/").queue()
     }
 
-    override fun getInvoke(): String {
-        return "shut"
-    }
+    override fun getInvoke() = "shut"
 
-    override fun getCategory(): Category {
-        return Category.ANIMALS
-    }
+    override fun getCategory() = Category.ANIMALS
 
-    override fun getDescription(): String {
-        return "Shut!!"
-    }
+    override fun getDescription() = "Shut!!"
 }

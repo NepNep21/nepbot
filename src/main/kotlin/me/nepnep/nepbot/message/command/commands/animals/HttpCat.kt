@@ -37,15 +37,9 @@ class HttpCat : ICommand {
         })
     }
 
-    override fun getInvoke(): String {
-        return "http"
-    }
+    override fun getInvoke() = "http"
 
-    override fun getCategory(): Category {
-        return Category.ANIMALS
-    }
+    override fun getCategory() = Category.ANIMALS
 
-    override fun getDescription(): String {
-        return "Http cats: ;http <int code>"
-    }
+    override fun getDescription() = "Http cats: ;http <int code>"
 }

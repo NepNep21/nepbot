@@ -34,15 +34,9 @@ class BottomCommand : ICommand {
         }
     }
 
-    override fun getInvoke(): String {
-        return "bottom"
-    }
+    override fun getInvoke() = "bottom"
 
-    override fun getCategory(): Category {
-        return Category.FUN
-    }
+    override fun getCategory() = Category.FUN
 
-    override fun getDescription(): String {
-        return "Encodes/Decodes to bottom: ;bottom <encode> | <decode> <String string>"
-    }
+    override fun getDescription() = "Encodes/Decodes to bottom: ;bottom <encode> | <decode> <String string>"
 }

@@ -19,15 +19,9 @@ class Shutdown : ICommand {
         exitProcess(0)
     }
 
-    override fun getInvoke(): String {
-        return "shutdown"
-    }
+    override fun getInvoke() = "shutdown"
 
-    override fun getCategory(): Category {
-        return Category.GENERAL
-    }
+    override fun getCategory() = Category.GENERAL
 
-    override fun getDescription(): String {
-        return "Shuts down the bot"
-    }
+    override fun getDescription() = "Shuts down the bot"
 }

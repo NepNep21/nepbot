@@ -23,19 +23,11 @@ class Purge : ICommand {
         channel.iterableHistory.takeAsync(amount).thenAccept(channel::purgeMessages)
     }
 
-    override fun getInvoke(): String {
-        return "purge"
-    }
+    override fun getInvoke() = "purge"
 
-    override fun getRequiredPermission(): Permission {
-        return Permission.MESSAGE_MANAGE
-    }
+    override fun getRequiredPermission() = Permission.MESSAGE_MANAGE
 
-    override fun getCategory(): Category {
-        return Category.MOD
-    }
+    override fun getCategory() = Category.MOD
 
-    override fun getDescription(): String {
-        return "Purges messaages: ;purge <int amount>"
-    }
+    override fun getDescription() = "Purges messaages: ;purge <int amount>"
 }

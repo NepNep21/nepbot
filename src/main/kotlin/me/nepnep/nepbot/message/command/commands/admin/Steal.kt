@@ -41,19 +41,11 @@ class Steal : ICommand {
         }
     }
 
-    override fun getInvoke(): String {
-        return "steal"
-    }
+    override fun getInvoke() = "steal"
 
-    override fun getRequiredPermission(): Permission {
-        return Permission.MANAGE_EMOTES
-    }
+    override fun getRequiredPermission() = Permission.MANAGE_EMOTES
 
-    override fun getCategory(): Category {
-        return Category.ADMIN
-    }
+    override fun getCategory() = Category.ADMIN
 
-    override fun getDescription(): String {
-        return "Steals an emote: ;steal <String url> <String name>"
-    }
+    override fun getDescription() = "Steals an emote: ;steal <String url> <String name>"
 }

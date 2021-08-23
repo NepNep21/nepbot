@@ -55,19 +55,11 @@ class Mute : ICommand {
         }
     }
 
-    override fun getInvoke(): String {
-        return "mute"
-    }
+    override fun getInvoke() = "mute"
 
-    override fun getRequiredPermission(): Permission {
-        return Permission.KICK_MEMBERS
-    }
+    override fun getRequiredPermission() = Permission.KICK_MEMBERS
 
-    override fun getCategory(): Category {
-        return Category.MOD
-    }
+    override fun getCategory() = Category.MOD
 
-    override fun getDescription(): String {
-        return "Mutes someone: ;mute <Mention member> <String reason>"
-    }
+    override fun getDescription() = "Mutes someone: ;mute <Mention member> <String reason>"
 }

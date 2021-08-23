@@ -73,15 +73,9 @@ class WhoIs : ICommand {
         }
     }
 
-    override fun getInvoke(): String {
-        return "whois"
-    }
+    override fun getInvoke() = "whois"
 
-    override fun getCategory(): Category {
-        return Category.INFO
-    }
+    override fun getCategory() = Category.INFO
 
-    override fun getDescription(): String {
-        return "Gets a user's information: ;whois <Mention member> | <long id> | nul"
-    }
+    override fun getDescription() = "Gets a user's information: ;whois <Mention member> | <long id> | nul"
 }

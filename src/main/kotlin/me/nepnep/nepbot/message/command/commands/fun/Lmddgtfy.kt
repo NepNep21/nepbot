@@ -14,15 +14,9 @@ class Lmddgtfy : ICommand {
         event.channel.sendMessageEmbeds(embed).queue()
     }
 
-    override fun getInvoke(): String {
-        return "lmddgtfy"
-    }
+    override fun getInvoke() = "lmddgtfy"
 
-    override fun getCategory(): Category {
-        return Category.FUN
-    }
+    override fun getCategory() = Category.FUN
 
-    override fun getDescription(): String {
-        return "Searches something for you on duck duck go: ;lmddgtfy <String query>"
-    }
+    override fun getDescription() = "Searches something for you on duck duck go: ;lmddgtfy <String query>"
 }

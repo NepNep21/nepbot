@@ -37,19 +37,11 @@ class Ban : ICommand {
         }
     }
 
-    override fun getInvoke(): String {
-        return "ban"
-    }
+    override fun getInvoke() = "ban"
 
-    override fun getRequiredPermission(): Permission {
-        return Permission.BAN_MEMBERS
-    }
+    override fun getRequiredPermission() = Permission.BAN_MEMBERS
 
-    override fun getCategory(): Category {
-        return Category.MOD
-    }
+    override fun getCategory() = Category.MOD
 
-    override fun getDescription(): String {
-        return "Bans someone: ;ban <Mention member> <String reason>"
-    }
+    override fun getDescription() = "Bans someone: ;ban <Mention member> <String reason>"
 }

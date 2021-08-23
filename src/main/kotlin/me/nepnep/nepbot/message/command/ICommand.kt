@@ -8,9 +8,7 @@ interface ICommand {
 
     fun getInvoke(): String
 
-    fun getRequiredPermission(): Permission {
-        return Permission.MESSAGE_WRITE
-    }
+    fun getRequiredPermission() = Permission.MESSAGE_WRITE
 
     fun getCategory(): Category
 

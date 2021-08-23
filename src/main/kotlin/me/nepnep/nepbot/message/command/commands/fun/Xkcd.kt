@@ -53,15 +53,9 @@ class Xkcd : ICommand {
         }
     }
 
-    override fun getInvoke(): String {
-        return "xkcd"
-    }
+    override fun getInvoke() = "xkcd"
 
-    override fun getCategory(): Category {
-        return Category.FUN
-    }
+    override fun getCategory() = Category.FUN
 
-    override fun getDescription(): String {
-        return "Returns a random xkcd comic or a specific one"
-    }
+    override fun getDescription() = "Returns a random xkcd comic or a specific one"
 }

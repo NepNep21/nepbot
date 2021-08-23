@@ -9,15 +9,9 @@ class Ping : ICommand {
         event.channel.sendMessage("${event.jda.gatewayPing}ms").queue()
     }
 
-    override fun getInvoke(): String {
-        return "ping"
-    }
+    override fun getInvoke() = "ping"
 
-    override fun getCategory(): Category {
-        return Category.GENERAL
-    }
+    override fun getCategory() = Category.GENERAL
 
-    override fun getDescription(): String {
-        return "Pong!"
-    }
+    override fun getDescription() = "Pong!"
 }

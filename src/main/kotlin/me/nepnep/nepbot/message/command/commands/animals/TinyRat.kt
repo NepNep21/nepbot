@@ -9,15 +9,9 @@ class TinyRat : ICommand {
         event.channel.sendMessage("http://mfw.tfw.wtf/").queue()
     }
 
-    override fun getInvoke(): String {
-        return "tinyrat"
-    }
+    override fun getInvoke() = "tinyrat"
 
-    override fun getCategory(): Category {
-        return Category.ANIMALS
-    }
+    override fun getCategory() = Category.ANIMALS
 
-    override fun getDescription(): String {
-        return "A tiny rat"
-    }
+    override fun getDescription() = "A tiny rat"
 }

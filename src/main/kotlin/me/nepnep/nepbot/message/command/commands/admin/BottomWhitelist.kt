@@ -11,19 +11,11 @@ class BottomWhitelist : ICommand {
         event.channel.addToWhitelist()
     }
 
-    override fun getInvoke(): String {
-        return "bottomwhitelist"
-    }
+    override fun getInvoke() = "bottomwhitelist"
 
-    override fun getRequiredPermission(): Permission {
-        return Permission.MANAGE_CHANNEL
-    }
+    override fun getRequiredPermission() = Permission.MANAGE_CHANNEL
 
-    override fun getCategory(): Category {
-        return Category.ADMIN
-    }
+    override fun getCategory() = Category.ADMIN
 
-    override fun getDescription(): String {
-        return "Adds the channel to the bottom whitelist"
-    }
+    override fun getDescription() = "Adds the channel to the bottom whitelist"
 }

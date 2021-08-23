@@ -37,19 +37,11 @@ class Kick : ICommand {
         }
     }
 
-    override fun getInvoke(): String {
-        return "kick"
-    }
+    override fun getInvoke() = "kick"
 
-    override fun getRequiredPermission(): Permission {
-        return Permission.KICK_MEMBERS
-    }
+    override fun getRequiredPermission() = Permission.KICK_MEMBERS
 
-    override fun getCategory(): Category {
-        return Category.MOD
-    }
+    override fun getCategory() = Category.MOD
 
-    override fun getDescription(): String {
-        return "Kicks someone: ;kick <Mention member> <String reason>"
-    }
+    override fun getDescription() = "Kicks someone: ;kick <Mention member> <String reason>"
 }

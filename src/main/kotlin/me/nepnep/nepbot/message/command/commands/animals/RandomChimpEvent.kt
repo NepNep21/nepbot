@@ -35,15 +35,9 @@ class RandomChimpEvent : ICommand {
         event.channel.sendMessage(monkeys[ThreadLocalRandom.current().nextInt(0, monkeys.size)]).queue()
     }
 
-    override fun getInvoke(): String {
-        return "randomchimpevent"
-    }
+    override fun getInvoke() = "randomchimpevent"
 
-    override fun getCategory(): Category {
-        return Category.ANIMALS
-    }
+    override fun getCategory() = Category.ANIMALS
 
-    override fun getDescription(): String {
-        return "Monkeys"
-    }
+    override fun getDescription() = "Monkeys"
 }

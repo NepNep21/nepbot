@@ -56,15 +56,9 @@ class Help : ICommand {
         return builder.toString()
     }
 
-    override fun getInvoke(): String {
-        return "help"
-    }
+    override fun getInvoke() = "help"
 
-    override fun getCategory(): Category {
-        return Category.GENERAL
-    }
+    override fun getCategory() = Category.GENERAL
 
-    override fun getDescription(): String {
-        return "Help page: ;help <int page> | null"
-    }
+    override fun getDescription() = "Help page: ;help <int page> | null"
 }

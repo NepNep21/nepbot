@@ -10,15 +10,9 @@ class Poll : ICommand {
         event.channel.sendMessage(args[ThreadLocalRandom.current().nextInt(0, args.size)]).queue()
     }
 
-    override fun getInvoke(): String {
-        return "poll"
-    }
+    override fun getInvoke() = "poll"
 
-    override fun getCategory(): Category {
-        return Category.GENERAL
-    }
+    override fun getCategory() = Category.GENERAL
 
-    override fun getDescription(): String {
-        return "Gets a random answer from options: ;poll <String... options>"
-    }
+    override fun getDescription() = "Gets a random answer from options: ;poll <String... options>"
 }

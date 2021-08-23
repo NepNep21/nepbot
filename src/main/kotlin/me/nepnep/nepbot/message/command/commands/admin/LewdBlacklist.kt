@@ -11,19 +11,11 @@ class LewdBlacklist : ICommand {
         event.channel.addToBlacklist()
     }
 
-    override fun getInvoke(): String {
-        return "lewdblacklist"
-    }
+    override fun getInvoke() = "lewdblacklist"
 
-    override fun getRequiredPermission(): Permission {
-        return Permission.MANAGE_CHANNEL
-    }
+    override fun getRequiredPermission() = Permission.MANAGE_CHANNEL
 
-    override fun getCategory(): Category {
-        return Category.ADMIN
-    }
+    override fun getCategory() = Category.ADMIN
 
-    override fun getDescription(): String {
-        return "Adds the current channel to the lewd blacklist"
-    }
+    override fun getDescription() = "Adds the current channel to the lewd blacklist"
 }

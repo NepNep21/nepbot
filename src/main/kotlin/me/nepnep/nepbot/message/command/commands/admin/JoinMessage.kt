@@ -23,19 +23,12 @@ class JoinMessage : ICommand {
         }
     }
 
-    override fun getInvoke(): String {
-        return "joinmessage"
-    }
+    override fun getInvoke() = "joinmessage"
 
-    override fun getRequiredPermission(): Permission {
-        return Permission.MANAGE_CHANNEL
-    }
+    override fun getRequiredPermission() = Permission.MANAGE_CHANNEL
 
-    override fun getCategory(): Category {
-        return Category.ADMIN
-    }
+    override fun getCategory() = Category.ADMIN
 
-    override fun getDescription(): String {
-        return ";joinmessage (set <long channelId> <String message (Use %s where you want the user's name to be)>) | remove"
-    }
+    override fun getDescription() =
+        ";joinmessage (set <long channelId> <String message (Use %s where you want the user's name to be)>) | remove"
 }

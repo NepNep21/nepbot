@@ -17,19 +17,11 @@ class SetDefaultRole : ICommand {
         }
     }
 
-    override fun getInvoke(): String {
-        return "setdefaultrole"
-    }
+    override fun getInvoke() = "setdefaultrole"
 
-    override fun getRequiredPermission(): Permission {
-        return Permission.MANAGE_ROLES
-    }
+    override fun getRequiredPermission() = Permission.MANAGE_ROLES
 
-    override fun getCategory(): Category {
-        return Category.ADMIN
-    }
+    override fun getCategory() = Category.ADMIN
 
-    override fun getDescription(): String {
-        return "Sets the default role: ;setdefaultrole <Mention role> or empty arguments for unsetting"
-    }
+    override fun getDescription() = "Sets the default role: ;setdefaultrole <Mention role> or empty arguments for unsetting"
 }

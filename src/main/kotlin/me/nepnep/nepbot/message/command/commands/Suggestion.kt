@@ -39,15 +39,9 @@ class Suggestion : ICommand {
         event.message.delete().queue()
     }
 
-    override fun getInvoke(): String {
-        return "suggestion"
-    }
+    override fun getInvoke() = "suggestion"
 
-    override fun getCategory(): Category {
-        return Category.GENERAL
-    }
+    override fun getCategory() = Category.GENERAL
 
-    override fun getDescription(): String {
-        return "Makes a suggestion: ;suggestion <String suggestion>"
-    }
+    override fun getDescription() = "Makes a suggestion: ;suggestion <String suggestion>"
 }

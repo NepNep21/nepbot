@@ -60,15 +60,9 @@ class UrbanDictionary : ICommand {
         })
     }
 
-    override fun getInvoke(): String {
-        return "urban"
-    }
+    override fun getInvoke() = "urban"
 
-    override fun getCategory(): Category {
-        return Category.INFO
-    }
+    override fun getCategory() = Category.INFO
 
-    override fun getDescription(): String {
-        return "Get a thing's definition from urban dictionary! ;urban <query>"
-    }
+    override fun getDescription() = "Get a thing's definition from urban dictionary! ;urban <query>"
 }

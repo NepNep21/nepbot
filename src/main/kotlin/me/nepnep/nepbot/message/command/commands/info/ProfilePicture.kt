@@ -36,15 +36,9 @@ class ProfilePicture : ICommand {
         }
     }
 
-    override fun getInvoke(): String {
-        return "pfp"
-    }
+    override fun getInvoke() = "pfp"
 
-    override fun getCategory(): Category {
-        return Category.INFO
-    }
+    override fun getCategory() = Category.INFO
 
-    override fun getDescription(): String {
-        return "Sends the avatar url of a user: ;pfp <Mention member> | <long id> | null"
-    }
+    override fun getDescription() = "Sends the avatar url of a user: ;pfp <Mention member> | <long id> | null"
 }

@@ -31,15 +31,9 @@ class BotInfo : ICommand {
         event.channel.sendMessageEmbeds(embed).queue()
     }
 
-    override fun getInvoke(): String {
-        return "botinfo"
-    }
+    override fun getInvoke() = "botinfo"
 
-    override fun getCategory(): Category {
-        return Category.INFO
-    }
+    override fun getCategory() = Category.INFO
 
-    override fun getDescription(): String {
-        return "Shows information about the bot!"
-    }
+    override fun getDescription() = "Shows information about the bot!"
 }

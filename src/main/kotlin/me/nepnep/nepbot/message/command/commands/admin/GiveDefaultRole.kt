@@ -26,19 +26,11 @@ class GiveDefaultRole : ICommand {
         }
     }
 
-    override fun getInvoke(): String {
-        return "givedefaultrole"
-    }
+    override fun getInvoke() = "givedefaultrole"
 
-    override fun getRequiredPermission(): Permission {
-        return Permission.MANAGE_ROLES
-    }
+    override fun getRequiredPermission() = Permission.MANAGE_ROLES
 
-    override fun getCategory(): Category {
-        return Category.ADMIN
-    }
+    override fun getCategory() = Category.ADMIN
 
-    override fun getDescription(): String {
-        return "Gives the default role to all members without one"
-    }
+    override fun getDescription() = "Gives the default role to all members without one"
 }

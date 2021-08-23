@@ -51,19 +51,11 @@ class Unmute : ICommand {
 
     }
 
-    override fun getInvoke(): String {
-        return "unmute"
-    }
+    override fun getInvoke() = "unmute"
 
-    override fun getRequiredPermission(): Permission {
-        return Permission.KICK_MEMBERS
-    }
+    override fun getRequiredPermission() = Permission.KICK_MEMBERS
 
-    override fun getCategory(): Category {
-        return Category.MOD
-    }
+    override fun getCategory() = Category.MOD
 
-    override fun getDescription(): String {
-        return "Unmutes someone: ;unmute <Mention member>"
-    }
+    override fun getDescription() = "Unmutes someone: ;unmute <Mention member>"
 }
