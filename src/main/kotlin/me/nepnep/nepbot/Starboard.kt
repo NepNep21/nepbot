@@ -15,7 +15,7 @@ class Starboard : ListenerAdapter() {
         if (channels.isNotEmpty()) {
             val starboard = channels[0]
             val channel = event.channel
-            if (!isInStarboard(event.messageIdLong) &&
+            if (!guild.isInStarboard(event.messageIdLong) &&
                 channel != starboard &&
                 guild.selfMember.hasPermission(channel, Permission.MESSAGE_WRITE)
             ) {
@@ -38,7 +38,7 @@ class Starboard : ListenerAdapter() {
                                     builder.setImage(attachments[0].url)
                                 }
 
-                                addToStarboard(event.messageIdLong)
+                                guild.addToStarboard(event.messageIdLong)
                                 starboard.sendMessageEmbeds(builder.build()).queue()
                             }
                         }
