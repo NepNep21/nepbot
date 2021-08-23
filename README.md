@@ -13,11 +13,7 @@ MONGODB_URL: The URL the bot will use to connect to a mongodb database
 
 Setting environment variables is operating system dependent, so search how to do it
 
-Your database should be called Nepbot and have 2 collections, one called "Guilds", and one called "Misc"
-
-Due to my shitcode, you have to initialize the "Misc" collection with a document, the structure should be this:
-
-![Document](https://github.com/NepNep21/nepbot/blob/main/.github/document.png?raw=true)
+Your database should be called Nepbot and have a collection called "Guilds"
 
 Create a file in the same directory as the bot, and create a file called "config.json", it should look something like this
 
