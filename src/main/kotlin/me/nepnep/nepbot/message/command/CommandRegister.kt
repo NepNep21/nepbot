@@ -30,7 +30,6 @@ object CommandRegister {
         register(Shut())
         register(TinyCat())
         register(TinyRat())
-        register(TinySnail())
         register(XmasRat())
         register(BottomCommand())
         register(Lmddgtfy())
