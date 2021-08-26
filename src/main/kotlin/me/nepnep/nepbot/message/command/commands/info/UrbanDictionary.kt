@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.ICommand
 import net.dv8tion.jda.api.EmbedBuilder
+import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import okhttp3.Call
 import okhttp3.Callback
@@ -45,6 +46,11 @@ class UrbanDictionary : ICommand {
 
                 val definition = best["definition"].textValue()
                 val example = best["example"].textValue()
+
+                if (definition.length > MessageEmbed.VALUE_MAX_LENGTH || example.length > MessageEmbed.VALUE_MAX_LENGTH) {
+                    channel.sendMessage("Embed field is too large!").queue()
+                    return
+                }
 
                 val embed = EmbedBuilder()
                     .addField("Definition:", definition, false)
