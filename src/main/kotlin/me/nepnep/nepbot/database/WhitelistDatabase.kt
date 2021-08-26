@@ -3,6 +3,7 @@ package me.nepnep.nepbot.database
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.mongodb.client.MongoClients
 import com.mongodb.client.model.Filters
+import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.model.Updates
 import me.nepnep.nepbot.DB_NAME
 import me.nepnep.nepbot.mongoConnectionString
@@ -12,7 +13,11 @@ fun TextChannel.addToWhitelist() {
     val client = MongoClients.create(mongoConnectionString)
     val collection = client.getDatabase(DB_NAME).getCollection("Guilds")
 
-    collection.updateOne(Filters.eq("guildId", guild.idLong), Updates.addToSet("whitelist.bottom", idLong))
+    collection.updateOne(
+        Filters.eq("guildId", guild.idLong),
+        Updates.addToSet("whitelist.bottom", idLong),
+        UpdateOptions().upsert(true)
+    )
     client.close()
 }
 
