@@ -30,7 +30,9 @@ class Ban : ICommand {
 
             if (!toBanUser.isBot) {
                 toBanUser.openPrivateChannel().queue {
-                    it.sendMessage("You have been banned from $guild, by $authorTag, reason: $reason").queue()
+                    it.sendMessage("You have been banned from $guild, by $authorTag, reason: $reason").queue(null) {
+                        channel.sendMessage("Failed to send dm").queue()
+                    }
                 }
             }
             guild.ban(toBan, 0, reason).queue()
