@@ -2,18 +2,16 @@ package me.nepnep.nepbot.database
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.mongodb.BasicDBObject
-import com.mongodb.client.MongoClients
 import com.mongodb.client.model.Filters
 import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.model.Updates
 import me.nepnep.nepbot.DB_NAME
-import me.nepnep.nepbot.mongoConnectionString
+import me.nepnep.nepbot.mongoClient
 import net.dv8tion.jda.api.entities.Guild
 import net.dv8tion.jda.api.entities.Role
 
 fun Guild.setDefaultRole(role: Role?) {
-    val client = MongoClients.create(mongoConnectionString)
-    val guilds = client.getDatabase(DB_NAME).getCollection("Guilds")
+    val guilds = mongoClient.getDatabase(DB_NAME).getCollection("Guilds")
 
     val filter = Filters.eq("guildId", idLong)
 
@@ -22,7 +20,6 @@ fun Guild.setDefaultRole(role: Role?) {
             filter,
             Updates.unset("defaultRole")
         )
-        client.close()
         return
     }
 
@@ -31,16 +28,13 @@ fun Guild.setDefaultRole(role: Role?) {
         Updates.combine(Updates.set("defaultRole", role.name)),
         UpdateOptions().upsert(true)
     )
-    client.close()
 }
 
 fun Guild.getDefaultRole(): Role? {
-    val client = MongoClients.create(mongoConnectionString)
-    val guilds = client.getDatabase(DB_NAME).getCollection("Guilds")
+    val guilds = mongoClient.getDatabase(DB_NAME).getCollection("Guilds")
 
     val first = guilds.find(BasicDBObject("guildId", idLong)).first()
 
-    client.close()
     first ?: return null
     val roleNode = ObjectMapper().readTree(first.toJson())["defaultRole"]
 
