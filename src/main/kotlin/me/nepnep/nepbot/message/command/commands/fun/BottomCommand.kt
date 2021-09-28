@@ -24,6 +24,11 @@ class BottomCommand : ICommand {
                     channel.sendMessage(Bottom.encode(string)).queue()
                 }
                 if (operation == "decode") {
+                    val decoded = Bottom.decode(string)
+                    if (decoded.contains("@everyone") || decoded.contains("@here")) {
+                        channel.sendMessage("Nice atEveryone attempt").queue()
+                        return
+                    }
                     channel.sendMessage(Bottom.decode(string)).queue()
                 }
             } catch (e: TranslationError) {
