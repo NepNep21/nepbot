@@ -17,6 +17,7 @@ import java.io.File
 internal val mongoClient = MongoClients.create(ConnectionString(System.getenv("MONGODB_URL")))
 internal val config = ObjectMapper().readTree(File("config.json"))
 internal const val DB_NAME = "Nepbot"
+internal val DEFAULT_PREFIX = config["prefix"].textValue()
 
 fun main() {
     val token = System.getenv("BOT_TOKEN")

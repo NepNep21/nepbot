@@ -1,5 +1,6 @@
 package me.nepnep.nepbot.message.command
 
+import me.nepnep.nepbot.database.getPrefix
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
@@ -8,7 +9,7 @@ class CommandResponder : ListenerAdapter() {
     override fun onGuildMessageReceived(event: GuildMessageReceivedEvent) {
         val content = event.message.contentRaw
         val guild = event.guild
-        val prefix = ";"
+        val prefix = guild.getPrefix()
         val author = event.author
         val channel = event.channel
 

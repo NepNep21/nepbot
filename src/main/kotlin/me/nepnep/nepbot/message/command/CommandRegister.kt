@@ -49,6 +49,7 @@ object CommandRegister {
         register(Shutdown())
         register(Suggestion())
         register(Poll())
+        register(Prefix())
     }
 
     private fun register(command: ICommand) {
