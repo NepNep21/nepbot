@@ -1,7 +1,5 @@
 package me.nepnep.nepbot.database
 
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.mongodb.BasicDBObject
 import com.mongodb.client.model.Filters
 import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.model.Updates
@@ -25,7 +23,7 @@ fun Guild.setDefaultRole(role: Role?) {
 
     guilds.updateOne(
         filter,
-        Updates.combine(Updates.set("defaultRole", role.name)),
+        Updates.set("defaultRole", role.name),
         UpdateOptions().upsert(true)
     )
 }
@@ -33,15 +31,9 @@ fun Guild.setDefaultRole(role: Role?) {
 fun Guild.getDefaultRole(): Role? {
     val guilds = mongoClient.getDatabase(DB_NAME).getCollection("Guilds")
 
-    val first = guilds.find(BasicDBObject("guildId", idLong)).first()
-
-    first ?: return null
-    val roleNode = ObjectMapper().readTree(first.toJson())["defaultRole"]
-
-    // May not be required, exists to be safe, more testing is needed
-    roleNode ?: return null
-
-    val name = roleNode.textValue()
+    val name = guilds.find(Filters.eq("guildId", idLong))
+        .first()
+        ?.get("defaultRole", String::class.java) ?: return null
 
     val roles = getRolesByName(name, false)
     if (roles.isEmpty()) {

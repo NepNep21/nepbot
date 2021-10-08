@@ -11,7 +11,7 @@ fun Guild.isInStarboard(message: Long): Boolean {
     val collection = mongoClient.getDatabase(DB_NAME).getCollection("Guilds")
     val document = collection.find(Filters.eq("guildId", idLong)).first() ?: return false
 
-    return message in document.get("starboard", List::class.java) ?: listOf<Long>()
+    return message in (document.get("starboard", List::class.java) ?: listOf<Long>())
 }
 
 fun Guild.addToStarboard(message: Long) {
