@@ -8,8 +8,6 @@ import me.nepnep.nepbot.message.command.CommandRegister
 import me.nepnep.nepbot.message.command.CommandResponder
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity
-import net.dv8tion.jda.api.events.ReadyEvent
-import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.utils.MemberCachePolicy
 import java.io.File
@@ -20,6 +18,9 @@ internal const val DB_NAME = "Nepbot"
 internal val DEFAULT_PREFIX = config["prefix"].textValue()
 
 fun main() {
+    Runtime.getRuntime().addShutdownHook(Thread {
+        mongoClient.close()
+    })
     val token = System.getenv("BOT_TOKEN")
 
     CommandRegister.registerCommands()
@@ -30,7 +31,6 @@ fun main() {
         .addEventListeners(
             CommandResponder(),
             Messages(),
-            ReadyListener(),
             DefaultRole(),
             JoinMessage(),
             LeaveMessage(),
@@ -55,13 +55,4 @@ fun main() {
         }
     }
     builder.build()
-}
-
-private class ReadyListener : ListenerAdapter() {
-    override fun onReady(event: ReadyEvent) {
-        Runtime.getRuntime().addShutdownHook(Thread {
-            event.jda.shutdown()
-            mongoClient.close()
-        })
-    }
 }
