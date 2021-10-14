@@ -3,7 +3,11 @@ package me.nepnep.nepbot
 import okhttp3.*
 import java.io.IOException
 
-fun OkHttpClient.request(url: String, success: (Response) -> Unit, failure: (IOException) -> Unit) {
+inline fun OkHttpClient.request(
+    url: String,
+    crossinline success: (Response) -> Unit,
+    crossinline failure: (IOException) -> Unit
+) {
     newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
         override fun onFailure(call: Call, e: IOException) {
             failure(e)
