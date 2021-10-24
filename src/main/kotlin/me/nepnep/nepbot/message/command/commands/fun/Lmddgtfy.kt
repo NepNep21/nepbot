@@ -1,11 +1,15 @@
 package me.nepnep.nepbot.message.command.commands.`fun`
 
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class Lmddgtfy : ICommand {
+class Lmddgtfy : AbstractCommand(
+    "lmddgtfy",
+    Category.FUN,
+    "Searches something for you on duck duck go: ;lmddgtfy <String query>"
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val query = args.subList(0, args.size).joinToString(" ")
         val safe = query.replace(" ", "%20")
@@ -13,10 +17,4 @@ class Lmddgtfy : ICommand {
 
         event.channel.sendMessageEmbeds(embed).queue()
     }
-
-    override fun getInvoke() = "lmddgtfy"
-
-    override fun getCategory() = Category.FUN
-
-    override fun getDescription() = "Searches something for you on duck duck go: ;lmddgtfy <String query>"
 }

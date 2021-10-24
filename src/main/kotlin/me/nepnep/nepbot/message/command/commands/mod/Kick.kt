@@ -1,11 +1,16 @@
 package me.nepnep.nepbot.message.command.commands.mod
 
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class Kick : ICommand {
+class Kick : AbstractCommand(
+    "kick",
+    Category.MOD,
+    "Kicks someone: ;kick <Mention member> <String reason>",
+    Permission.KICK_MEMBERS
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val mentioned = event.message.mentionedMembers
         val channel = event.channel
@@ -36,12 +41,4 @@ class Kick : ICommand {
             guild.kick(toKick, reason).queue()
         }
     }
-
-    override fun getInvoke() = "kick"
-
-    override fun getRequiredPermission() = Permission.KICK_MEMBERS
-
-    override fun getCategory() = Category.MOD
-
-    override fun getDescription() = "Kicks someone: ;kick <Mention member> <String reason>"
 }

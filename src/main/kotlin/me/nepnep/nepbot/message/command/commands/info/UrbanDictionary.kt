@@ -2,14 +2,18 @@ package me.nepnep.nepbot.message.command.commands.info
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.request
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.net.URLEncoder
 
-class UrbanDictionary : ICommand {
+class UrbanDictionary : AbstractCommand(
+    "urban",
+    Category.INFO,
+    "Get a thing's definition from urban dictionary! ;urban <query>"
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val channel = event.channel
         if (args.isEmpty()) {
@@ -56,10 +60,4 @@ class UrbanDictionary : ICommand {
             channel.sendMessage("API Issues, try again later.").queue()
         }
     }
-
-    override fun getInvoke() = "urban"
-
-    override fun getCategory() = Category.INFO
-
-    override fun getDescription() = "Get a thing's definition from urban dictionary! ;urban <query>"
 }

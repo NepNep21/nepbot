@@ -1,11 +1,15 @@
 package me.nepnep.nepbot.message.command.commands.`fun`
 
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.request
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class Xkcd : ICommand {
+class Xkcd : AbstractCommand(
+    "xkcd",
+    Category.FUN,
+    "Returns a random xkcd comic or a specific one"
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val channel = event.channel
         when (args.size) {
@@ -34,10 +38,4 @@ class Xkcd : ICommand {
             }
         }
     }
-
-    override fun getInvoke() = "xkcd"
-
-    override fun getCategory() = Category.FUN
-
-    override fun getDescription() = "Returns a random xkcd comic or a specific one"
 }

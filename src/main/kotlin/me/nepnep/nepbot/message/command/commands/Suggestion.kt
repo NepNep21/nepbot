@@ -1,12 +1,16 @@
 package me.nepnep.nepbot.message.command.commands
 
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class Suggestion : ICommand {
+class Suggestion : AbstractCommand(
+    "suggestion",
+    Category.GENERAL,
+    "Makes a suggestion: ;suggestion <String suggestion>"
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val channel = event.channel
 
@@ -38,10 +42,4 @@ class Suggestion : ICommand {
         }
         event.message.delete().queue()
     }
-
-    override fun getInvoke() = "suggestion"
-
-    override fun getCategory() = Category.GENERAL
-
-    override fun getDescription() = "Makes a suggestion: ;suggestion <String suggestion>"
 }

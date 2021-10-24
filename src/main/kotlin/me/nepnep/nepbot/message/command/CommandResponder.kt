@@ -25,11 +25,11 @@ class CommandResponder : ListenerAdapter() {
             if (CommandRegister.register.containsKey(invoke)) {
                 val command = CommandRegister.register[invoke]!!
 
-                if (event.member!!.hasPermission(channel, command.getRequiredPermission())) {
+                if (event.member!!.hasPermission(channel, command.requiredPermission)) {
                     val args = split.subList(1, split.size)
                     command.execute(args, event)
                 } else {
-                    channel.sendMessage("Invalid permissions (required ${command.getRequiredPermission().name})")
+                    channel.sendMessage("Invalid permissions (required ${command.requiredPermission.name})")
                         .queue()
                 }
             }

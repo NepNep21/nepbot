@@ -1,12 +1,17 @@
 package me.nepnep.nepbot.message.command.commands.mod
 
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.dv8tion.jda.api.exceptions.HierarchyException
 
-class Unmute : ICommand {
+class Unmute : AbstractCommand(
+    "unmute",
+    Category.MOD,
+    "Unmutes someone: ;unmute <Mention member>",
+    Permission.KICK_MEMBERS
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val mentioned = event.message.mentionedMembers
         val channel = event.channel
@@ -48,14 +53,5 @@ class Unmute : ICommand {
         } catch (e: HierarchyException) {
             channel.sendMessage(":x: I can't manage the Muted role, it is higher than my max role!").queue()
         }
-
     }
-
-    override fun getInvoke() = "unmute"
-
-    override fun getRequiredPermission() = Permission.KICK_MEMBERS
-
-    override fun getCategory() = Category.MOD
-
-    override fun getDescription() = "Unmutes someone: ;unmute <Mention member>"
 }

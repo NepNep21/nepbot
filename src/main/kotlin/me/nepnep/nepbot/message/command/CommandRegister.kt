@@ -10,7 +10,7 @@ import me.nepnep.nepbot.message.command.commands.info.*
 import me.nepnep.nepbot.message.command.commands.mod.*
 
 object CommandRegister {
-    val register = mutableMapOf<String, ICommand>()
+    val register = mutableMapOf<String, AbstractCommand>()
 
     fun registerCommands() {
         register(BottomWhitelist())
@@ -52,7 +52,7 @@ object CommandRegister {
         register(Prefix())
     }
 
-    private fun register(command: ICommand) {
-        register[command.getInvoke()] = command
+    private fun register(command: AbstractCommand) {
+        register[command.invoke] = command
     }
 }

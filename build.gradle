@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.kotlin.jvm' version '1.5.30-M1'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.31'
 }
 
 group 'me.nepnep.nepbot'
@@ -16,10 +16,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.dv8tion:JDA:4.3.0_304'
-    implementation 'org.mongodb:mongodb-driver-sync:4.1.1'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.12.0'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.0'
+    implementation 'net.dv8tion:JDA:4.3.0_339'
+    implementation 'org.mongodb:mongodb-driver-sync:4.3.2'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.0'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
     implementation 'ch.qos.logback:logback-classic:1.3.0-alpha5'
     implementation 'com.github.bottom-software-foundation:bottom-java:v2.1.0'
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'

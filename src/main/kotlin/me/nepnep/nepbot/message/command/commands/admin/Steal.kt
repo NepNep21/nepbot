@@ -1,14 +1,19 @@
 package me.nepnep.nepbot.message.command.commands.admin
 
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.Icon
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.net.MalformedURLException
 import java.net.URL
 
-class Steal : ICommand {
+class Steal : AbstractCommand(
+    "steal",
+    Category.ADMIN,
+    "Steals an emote: ;steal <String url> <String name>",
+    Permission.MANAGE_EMOTES
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val channel = event.channel
         val guild = event.guild
@@ -40,12 +45,4 @@ class Steal : ICommand {
             channel.sendMessage("Malformed URL").queue()
         }
     }
-
-    override fun getInvoke() = "steal"
-
-    override fun getRequiredPermission() = Permission.MANAGE_EMOTES
-
-    override fun getCategory() = Category.ADMIN
-
-    override fun getDescription() = "Steals an emote: ;steal <String url> <String name>"
 }

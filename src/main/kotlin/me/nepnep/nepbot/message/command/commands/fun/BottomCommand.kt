@@ -4,10 +4,14 @@ import com.github.bottomSoftwareFoundation.bottom.Bottom
 import com.github.bottomSoftwareFoundation.bottom.TranslationError
 import me.nepnep.nepbot.database.isInWhitelist
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class BottomCommand : ICommand {
+class BottomCommand : AbstractCommand(
+    "bottom",
+    Category.FUN,
+    "Encodes/Decodes to bottom: ;bottom <encode> | <decode> <String string>"
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val channel = event.channel
         if (channel.isInWhitelist() && args.size >= 2) {
@@ -38,10 +42,4 @@ class BottomCommand : ICommand {
             channel.sendMessage("Invalid usage or the channel isn't whitelisted!").queue()
         }
     }
-
-    override fun getInvoke() = "bottom"
-
-    override fun getCategory() = Category.FUN
-
-    override fun getDescription() = "Encodes/Decodes to bottom: ;bottom <encode> | <decode> <String string>"
 }

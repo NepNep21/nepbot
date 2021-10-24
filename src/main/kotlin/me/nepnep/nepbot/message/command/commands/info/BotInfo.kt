@@ -1,13 +1,17 @@
 package me.nepnep.nepbot.message.command.commands.info
 
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.JDAInfo
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.lang.management.ManagementFactory
 
-class BotInfo : ICommand {
+class BotInfo : AbstractCommand(
+    "botinfo",
+    Category.INFO,
+    "Shows information about the bot!"
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val guilds = event.jda.guildCache
         val runtime = Runtime.getRuntime()
@@ -30,10 +34,4 @@ class BotInfo : ICommand {
             .build()
         event.channel.sendMessageEmbeds(embed).queue()
     }
-
-    override fun getInvoke() = "botinfo"
-
-    override fun getCategory() = Category.INFO
-
-    override fun getDescription() = "Shows information about the bot!"
 }

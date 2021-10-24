@@ -1,10 +1,14 @@
 package me.nepnep.nepbot.message.command.commands.info
 
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class ProfilePicture : ICommand {
+class ProfilePicture : AbstractCommand(
+    "pfp",
+    Category.INFO,
+    "Sends the avatar url of a user: ;pfp <Mention member> | <long id> | null"
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val channel = event.channel
         val authorUrl = event.author.avatarUrl
@@ -35,10 +39,4 @@ class ProfilePicture : ICommand {
             channel.sendMessage("Invalid id").queue()
         }
     }
-
-    override fun getInvoke() = "pfp"
-
-    override fun getCategory() = Category.INFO
-
-    override fun getDescription() = "Sends the avatar url of a user: ;pfp <Mention member> | <long id> | null"
 }

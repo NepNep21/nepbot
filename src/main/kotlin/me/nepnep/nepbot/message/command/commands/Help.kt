@@ -2,11 +2,15 @@ package me.nepnep.nepbot.message.command.commands
 
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.CommandRegister
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class Help : ICommand {
+class Help : AbstractCommand(
+    "help",
+    Category.GENERAL,
+    "Help page: ;help <int page> | null"
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val channel = event.channel
         if (args.isEmpty()) {
@@ -47,18 +51,12 @@ class Help : ICommand {
     }
 
     private fun getDescriptions(category: Category): String {
-        val commands = CommandRegister.register.values.filter { it.getCategory() == category }
+        val commands = CommandRegister.register.values.filter { it.category == category }
 
         val builder = StringBuilder()
         for (command in commands) {
-            builder.append(command.getInvoke() + "\n${command.getDescription()}\n\n")
+            builder.append(command.invoke + "\n${command.description}\n\n")
         }
         return builder.toString()
     }
-
-    override fun getInvoke() = "help"
-
-    override fun getCategory() = Category.GENERAL
-
-    override fun getDescription() = "Help page: ;help <int page> | null"
 }

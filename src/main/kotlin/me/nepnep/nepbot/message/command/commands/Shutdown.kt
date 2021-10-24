@@ -2,11 +2,15 @@ package me.nepnep.nepbot.message.command.commands
 
 import me.nepnep.nepbot.config
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import kotlin.system.exitProcess
 
-class Shutdown : ICommand {
+class Shutdown : AbstractCommand(
+    "shutdown",
+    Category.GENERAL,
+    "Shuts down the bot"
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val channel = event.channel
         val operator = config["operator"].longValue()
@@ -18,10 +22,4 @@ class Shutdown : ICommand {
         channel.sendMessage("Shutting down").complete()
         exitProcess(0)
     }
-
-    override fun getInvoke() = "shutdown"
-
-    override fun getCategory() = Category.GENERAL
-
-    override fun getDescription() = "Shuts down the bot"
 }

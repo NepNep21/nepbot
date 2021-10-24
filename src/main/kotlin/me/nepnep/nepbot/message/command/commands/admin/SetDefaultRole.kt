@@ -2,11 +2,16 @@ package me.nepnep.nepbot.message.command.commands.admin
 
 import me.nepnep.nepbot.database.setDefaultRole
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class SetDefaultRole : ICommand {
+class SetDefaultRole : AbstractCommand(
+    "setdefaultrole",
+    Category.ADMIN,
+    "Sets the default role: ;setdefaultrole <Mention role> or empty arguments for unsetting",
+    Permission.MANAGE_ROLES
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val mentionedRoles = event.message.mentionedRoles
         val guild = event.guild
@@ -16,12 +21,4 @@ class SetDefaultRole : ICommand {
             guild.setDefaultRole(mentionedRoles[0])
         }
     }
-
-    override fun getInvoke() = "setdefaultrole"
-
-    override fun getRequiredPermission() = Permission.MANAGE_ROLES
-
-    override fun getCategory() = Category.ADMIN
-
-    override fun getDescription() = "Sets the default role: ;setdefaultrole <Mention role> or empty arguments for unsetting"
 }

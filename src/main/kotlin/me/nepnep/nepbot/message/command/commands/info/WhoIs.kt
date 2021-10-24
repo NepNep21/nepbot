@@ -1,14 +1,18 @@
 package me.nepnep.nepbot.message.command.commands.info
 
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.User
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 
-class WhoIs : ICommand {
+class WhoIs : AbstractCommand(
+    "whois",
+    Category.INFO,
+    "Gets a user's information: ;whois <Mention member> | <long id> | nul"
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val mentioned = event.message.mentionedMembers
         if (mentioned.isNotEmpty()) {
@@ -72,10 +76,4 @@ class WhoIs : ICommand {
             channel.sendMessageEmbeds(embed).queue()
         }
     }
-
-    override fun getInvoke() = "whois"
-
-    override fun getCategory() = Category.INFO
-
-    override fun getDescription() = "Gets a user's information: ;whois <Mention member> | <long id> | nul"
 }

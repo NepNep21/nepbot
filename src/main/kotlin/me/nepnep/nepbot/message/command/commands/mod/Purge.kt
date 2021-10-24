@@ -1,11 +1,16 @@
 package me.nepnep.nepbot.message.command.commands.mod
 
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.message.command.ICommand
+import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 
-class Purge : ICommand {
+class Purge : AbstractCommand(
+    "purge",
+    Category.MOD,
+    "Purges messaages: ;purge <int amount>",
+    Permission.MESSAGE_MANAGE
+) {
     override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
         val channel = event.channel
         // May not be required
@@ -22,12 +27,4 @@ class Purge : ICommand {
         }
         channel.iterableHistory.takeAsync(amount).thenAccept(channel::purgeMessages)
     }
-
-    override fun getInvoke() = "purge"
-
-    override fun getRequiredPermission() = Permission.MESSAGE_MANAGE
-
-    override fun getCategory() = Category.MOD
-
-    override fun getDescription() = "Purges messaages: ;purge <int amount>"
 }
