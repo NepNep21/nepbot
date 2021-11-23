@@ -50,6 +50,7 @@ object CommandRegister {
         register(Suggestion())
         register(Poll())
         register(Prefix())
+        register(StealSticker())
     }
 
     private fun register(command: AbstractCommand) {

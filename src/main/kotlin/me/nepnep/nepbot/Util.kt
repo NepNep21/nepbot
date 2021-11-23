@@ -2,6 +2,7 @@ package me.nepnep.nepbot
 
 import okhttp3.*
 import java.io.IOException
+import java.net.URL
 
 inline fun OkHttpClient.request(
     url: String,
@@ -17,4 +18,14 @@ inline fun OkHttpClient.request(
             response.use(success)
         }
     })
+}
+
+fun URL.isDiscord(): Boolean {
+    val domainLevels = host.split('.')
+    return try {
+        val registeredDomain = domainLevels.subList(domainLevels.size - 2, domainLevels.size).joinToString(".")
+        registeredDomain in arrayOf("discordapp.net", "discordapp.com")
+    } catch (e: IndexOutOfBoundsException) {
+        false
+    }
 }

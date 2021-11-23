@@ -1,5 +1,6 @@
 package me.nepnep.nepbot.message.command.commands.admin
 
+import me.nepnep.nepbot.isDiscord
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
@@ -33,6 +34,12 @@ class Steal : AbstractCommand(
 
         try {
             val url = URL(args[0])
+
+            if (!url.isDiscord()) {
+                channel.sendMessage("Only discord URLs may be used").queue()
+                return
+            }
+
             val connection = url.openConnection()
             connection.setRequestProperty("User-Agent", "")
 
