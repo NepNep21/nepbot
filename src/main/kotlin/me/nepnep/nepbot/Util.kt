@@ -34,8 +34,10 @@ fun URL.isDiscord(): Boolean {
     }
 }
 
-fun Member.canSend(channel: GuildMessageChannel) =
-    if (channel is ThreadChannel) hasPermission(channel, Permission.MESSAGE_SEND_IN_THREADS) else hasPermission(
-        channel,
-        Permission.MESSAGE_SEND
-    )
+fun Member.canSend(channel: GuildMessageChannel): Boolean {
+    return if (channel is ThreadChannel) {
+        hasPermission(channel, Permission.MESSAGE_SEND_IN_THREADS)
+    } else {
+        hasPermission(channel, Permission.MESSAGE_SEND)
+    }
+}
