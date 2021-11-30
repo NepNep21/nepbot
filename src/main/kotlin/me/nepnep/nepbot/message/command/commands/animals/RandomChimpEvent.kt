@@ -2,7 +2,8 @@ package me.nepnep.nepbot.message.command.commands.animals
 
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import java.util.concurrent.ThreadLocalRandom
 
 class RandomChimpEvent : AbstractCommand(
@@ -36,7 +37,7 @@ class RandomChimpEvent : AbstractCommand(
         "https://cdn.discordapp.com/attachments/710891361615740948/762014906039271524/video0.mp4"
     )
 
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        event.channel.sendMessage(monkeys[ThreadLocalRandom.current().nextInt(0, monkeys.size)]).queue()
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+        channel.sendMessage(monkeys[ThreadLocalRandom.current().nextInt(0, monkeys.size)]).queue()
     }
 }

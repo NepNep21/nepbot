@@ -5,15 +5,15 @@ import com.github.bottomSoftwareFoundation.bottom.TranslationError
 import me.nepnep.nepbot.database.isInWhitelist
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class BottomCommand : AbstractCommand(
     "bottom",
     Category.FUN,
     "Encodes/Decodes to bottom: ;bottom <encode> | <decode> <String string>"
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        val channel = event.channel
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         if (channel.isInWhitelist() && args.size >= 2) {
             val string = args.subList(1, args.size).joinToString(" ")
 

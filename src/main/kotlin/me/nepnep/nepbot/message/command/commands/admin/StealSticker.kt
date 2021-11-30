@@ -4,7 +4,8 @@ import me.nepnep.nepbot.isDiscord
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.message.command.Category
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.internal.requests.Route
 import net.dv8tion.jda.internal.requests.restaction.AuditableRestActionImpl
 import net.dv8tion.jda.internal.utils.IOUtil
@@ -16,13 +17,12 @@ class StealSticker : AbstractCommand(
     "stealsticker",
     Category.ADMIN,
     "Steals a sticker: ;stealsticker (<String link> \"<String description>\" \"<CommaSeparated tags>\" \"<String name>\") | <Sticker sticker>",
-    Permission.MANAGE_EMOTES
+    Permission.MANAGE_EMOTES_AND_STICKERS
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val guild = event.guild
-        val channel = event.channel
-        // Same works for stickers
-        if (!guild.selfMember.hasPermission(Permission.MANAGE_EMOTES)) {
+
+        if (!guild.selfMember.hasPermission(Permission.MANAGE_EMOTES_AND_STICKERS)) {
             channel.sendMessage("I can't upload stickers!").queue()
             return
         }

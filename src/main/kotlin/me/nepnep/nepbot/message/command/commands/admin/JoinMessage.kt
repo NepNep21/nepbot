@@ -4,7 +4,8 @@ import me.nepnep.nepbot.database.setJoinDetails
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class JoinMessage : AbstractCommand(
     "joinmessage",
@@ -12,9 +13,8 @@ class JoinMessage : AbstractCommand(
     ";joinmessage (set <long channelId> <String message (Use %s where you want the user's name to be)>) | remove",
     Permission.MANAGE_CHANNEL
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val guild = event.guild
-        val channel = event.channel
         try {
             if (args.size >= 3 && args[0] == "set") {
                 guild.setJoinDetails(args[1].toLong(), args.subList(2, args.size).joinToString(" "))

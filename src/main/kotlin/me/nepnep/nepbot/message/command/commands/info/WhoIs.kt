@@ -1,10 +1,11 @@
 package me.nepnep.nepbot.message.command.commands.info
 
-import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
+import me.nepnep.nepbot.message.command.Category
 import net.dv8tion.jda.api.EmbedBuilder
+import net.dv8tion.jda.api.entities.GuildMessageChannel
 import net.dv8tion.jda.api.entities.User
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 
@@ -13,13 +14,13 @@ class WhoIs : AbstractCommand(
     Category.INFO,
     "Gets a user's information: ;whois <Mention member> | <long id> | nul"
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val mentioned = event.message.mentionedMembers
         if (mentioned.isNotEmpty()) {
             sendEmbed(mentioned[0].user, event)
             return
         }
-        val channel = event.channel
+
         if (args.isNotEmpty()) {
             try {
                 event.jda.retrieveUserById(args[0]).queue({
@@ -35,7 +36,7 @@ class WhoIs : AbstractCommand(
         sendEmbed(event.author, event)
     }
 
-    private fun sendEmbed(user: User, event: GuildMessageReceivedEvent) {
+    private fun sendEmbed(user: User, event: MessageReceivedEvent) {
         val channel = event.channel
         val now = LocalDate.now()
 

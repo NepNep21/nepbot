@@ -3,7 +3,8 @@ package me.nepnep.nepbot.message.command.commands.mod
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.exceptions.HierarchyException
 
 class Unmute : AbstractCommand(
@@ -12,9 +13,8 @@ class Unmute : AbstractCommand(
     "Unmutes someone: ;unmute <Mention member>",
     Permission.KICK_MEMBERS
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val mentioned = event.message.mentionedMembers
-        val channel = event.channel
 
         if (mentioned.isEmpty()) {
             channel.sendMessage(":x: Incorrect usage").queue()

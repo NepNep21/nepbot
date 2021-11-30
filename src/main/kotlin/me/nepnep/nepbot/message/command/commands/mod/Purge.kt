@@ -3,7 +3,8 @@ package me.nepnep.nepbot.message.command.commands.mod
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class Purge : AbstractCommand(
     "purge",
@@ -11,8 +12,7 @@ class Purge : AbstractCommand(
     "Purges messaages: ;purge <int amount>",
     Permission.MESSAGE_MANAGE
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        val channel = event.channel
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         // May not be required
         val selfMember = event.guild.selfMember
         if (!selfMember.hasPermission(channel, Permission.MESSAGE_HISTORY)

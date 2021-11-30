@@ -4,20 +4,23 @@ import me.nepnep.nepbot.database.addToStarboard
 import me.nepnep.nepbot.database.isInStarboard
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent
+import net.dv8tion.jda.api.events.message.react.MessageReactionAddEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 
 class Starboard : ListenerAdapter() {
-    override fun onGuildMessageReactionAdd(event: GuildMessageReactionAddEvent) {
+    override fun onMessageReactionAdd(event: MessageReactionAddEvent) {
+        if (!event.isFromGuild) {
+            return
+        }
         val guild = event.guild
         val channels = guild.getTextChannelsByName("starboard", false)
 
         if (channels.isNotEmpty()) {
             val starboard = channels[0]
             val channel = event.channel
-            if (!guild.isInStarboard(event.messageIdLong) &&
-                channel != starboard &&
-                guild.selfMember.hasPermission(channel, Permission.MESSAGE_WRITE)
+            if (!guild.isInStarboard(event.messageIdLong)
+                && channel != starboard
+                && guild.selfMember.hasPermission(starboard, Permission.MESSAGE_SEND)
             ) {
                 event.retrieveMessage().queue { message ->
                     val stars = message.reactions.filter { it.reactionEmote.isEmoji && it.reactionEmote.emoji == "⭐" }

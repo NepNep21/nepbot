@@ -1,5 +1,9 @@
 package me.nepnep.nepbot
 
+import net.dv8tion.jda.api.Permission
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.entities.Member
+import net.dv8tion.jda.api.entities.ThreadChannel
 import okhttp3.*
 import java.io.IOException
 import java.net.URL
@@ -29,3 +33,9 @@ fun URL.isDiscord(): Boolean {
         false
     }
 }
+
+fun Member.canSend(channel: GuildMessageChannel) =
+    if (channel is ThreadChannel) hasPermission(channel, Permission.MESSAGE_SEND_IN_THREADS) else hasPermission(
+        channel,
+        Permission.MESSAGE_SEND
+    )

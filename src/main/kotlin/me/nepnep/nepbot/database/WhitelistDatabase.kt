@@ -6,9 +6,9 @@ import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.model.Updates
 import me.nepnep.nepbot.DB_NAME
 import me.nepnep.nepbot.mongoClient
-import net.dv8tion.jda.api.entities.TextChannel
+import net.dv8tion.jda.api.entities.GuildMessageChannel
 
-fun TextChannel.addToWhitelist() {
+fun GuildMessageChannel.addToWhitelist() {
     val collection = mongoClient.getDatabase(DB_NAME).getCollection("Guilds")
 
     collection.updateOne(
@@ -18,7 +18,7 @@ fun TextChannel.addToWhitelist() {
     )
 }
 
-fun TextChannel.isInWhitelist(): Boolean {
+fun GuildMessageChannel.isInWhitelist(): Boolean {
     val collection = mongoClient.getDatabase(DB_NAME).getCollection("Guilds")
     val document = collection.find(Filters.eq("guildId", guild.idLong)).first() ?: return false
 
@@ -35,7 +35,7 @@ fun TextChannel.isInWhitelist(): Boolean {
     return false
 }
 
-fun TextChannel.removeFromWhitelist() {
+fun GuildMessageChannel.removeFromWhitelist() {
     val collection = mongoClient.getDatabase(DB_NAME).getCollection("Guilds")
 
     collection.updateOne(Filters.eq("guildId", guild.idLong), Updates.pull("whitelist.bottom", idLong))

@@ -4,7 +4,8 @@ import me.nepnep.nepbot.database.addToWhitelist
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class BottomWhitelist : AbstractCommand(
     "bottomwhitelist",
@@ -12,7 +13,7 @@ class BottomWhitelist : AbstractCommand(
     "Adds the channel to the bottom whitelist",
     Permission.MANAGE_CHANNEL
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        event.channel.addToWhitelist()
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+        channel.addToWhitelist()
     }
 }

@@ -4,15 +4,15 @@ import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.CommandRegister
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.EmbedBuilder
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class Help : AbstractCommand(
     "help",
     Category.GENERAL,
     "Help page: ;help <int page> | null"
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        val channel = event.channel
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         if (args.isEmpty()) {
             val categories = Category.values().joinToString("\n") { it.toString() }
 

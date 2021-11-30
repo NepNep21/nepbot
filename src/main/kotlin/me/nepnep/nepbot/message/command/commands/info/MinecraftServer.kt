@@ -5,15 +5,15 @@ import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.request
 import net.dv8tion.jda.api.EmbedBuilder
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class MinecraftServer : AbstractCommand(
     "mcsrv",
     Category.INFO,
     "Gets a minecraft server's info: ;mcsrv <String address>"
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        val channel = event.channel
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         if (args.size != 1) {
             channel.sendMessage("Invalid usage").queue()
             return

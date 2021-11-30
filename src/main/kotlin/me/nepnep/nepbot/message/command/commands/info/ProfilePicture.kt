@@ -2,15 +2,15 @@ package me.nepnep.nepbot.message.command.commands.info
 
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class ProfilePicture : AbstractCommand(
     "pfp",
     Category.INFO,
     "Sends the avatar url of a user: ;pfp <Mention member> | <long id> | null"
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        val channel = event.channel
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val authorUrl = event.author.avatarUrl
         val mentioned = event.message.mentionedMembers
 

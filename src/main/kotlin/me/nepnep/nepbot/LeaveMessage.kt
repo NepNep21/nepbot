@@ -11,7 +11,7 @@ class LeaveMessage : ListenerAdapter() {
 
         if (channels.isNotEmpty()) {
             val channel = channels[0]
-            if (guild.selfMember.hasPermission(channel, Permission.MESSAGE_WRITE)) {
+            if (guild.selfMember.hasPermission(channel, Permission.MESSAGE_SEND)) {
                 channel.sendMessage("${event.user.asTag} just left the server, goodbye.").queue()
             }
         }

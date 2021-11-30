@@ -6,9 +6,9 @@ import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.model.Updates
 import me.nepnep.nepbot.DB_NAME
 import me.nepnep.nepbot.mongoClient
-import net.dv8tion.jda.api.entities.TextChannel
+import net.dv8tion.jda.api.entities.GuildMessageChannel
 
-fun TextChannel.addToBlacklist() {
+fun GuildMessageChannel.addToBlacklist() {
     val collection = mongoClient.getDatabase(DB_NAME).getCollection("Guilds")
 
     collection.updateOne(
@@ -18,7 +18,7 @@ fun TextChannel.addToBlacklist() {
     )
 }
 
-fun TextChannel.isInBlacklist(): Boolean {
+fun GuildMessageChannel.isInBlacklist(): Boolean {
     val collection = mongoClient.getDatabase(DB_NAME).getCollection("Guilds")
 
     val document = collection.find(Filters.eq("guildId", guild.idLong)).first() ?: return false
@@ -36,7 +36,7 @@ fun TextChannel.isInBlacklist(): Boolean {
     return false
 }
 
-fun TextChannel.removeFromBlacklist() {
+fun GuildMessageChannel.removeFromBlacklist() {
     val collection = mongoClient.getDatabase(DB_NAME).getCollection("Guilds")
 
     collection.updateOne(Filters.eq("guildId", guild.idLong), Updates.pull("blacklist.lewd", idLong))

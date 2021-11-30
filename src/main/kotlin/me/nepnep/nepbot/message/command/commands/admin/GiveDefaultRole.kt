@@ -4,7 +4,8 @@ import me.nepnep.nepbot.database.getDefaultRole
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class GiveDefaultRole : AbstractCommand(
     "givedefaultrole",
@@ -12,11 +13,10 @@ class GiveDefaultRole : AbstractCommand(
     "Gives the default role to all members without one",
     Permission.MANAGE_ROLES
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val guild = event.guild
         val role = guild.getDefaultRole() ?: return
 
-        val channel = event.channel
         val selfMember = guild.selfMember
         if (!selfMember.canInteract(role) || !selfMember.hasPermission(Permission.MANAGE_ROLES)) {
             channel.sendMessage("I cannot interact with the default role").queue()

@@ -4,8 +4,9 @@ import me.nepnep.nepbot.isDiscord
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
+import net.dv8tion.jda.api.entities.GuildMessageChannel
 import net.dv8tion.jda.api.entities.Icon
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import java.net.MalformedURLException
 import java.net.URL
 
@@ -13,13 +14,12 @@ class Steal : AbstractCommand(
     "steal",
     Category.ADMIN,
     "Steals an emote: ;steal <String url> <String name>",
-    Permission.MANAGE_EMOTES
+    Permission.MANAGE_EMOTES_AND_STICKERS
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        val channel = event.channel
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val guild = event.guild
 
-        if (!guild.selfMember.hasPermission(Permission.MANAGE_EMOTES)) {
+        if (!guild.selfMember.hasPermission(Permission.MANAGE_EMOTES_AND_STICKERS)) {
             channel.sendMessage("Insufficient bot permissions!").queue()
             return
         }

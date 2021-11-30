@@ -4,7 +4,8 @@ import me.nepnep.nepbot.database.setPrefix
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class Prefix : AbstractCommand(
     "prefix",
@@ -12,8 +13,7 @@ class Prefix : AbstractCommand(
     "Sets/unsets the prefix: ;prefix (set <String prefix>) | unset",
     Permission.MANAGE_CHANNEL
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        val channel = event.channel
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         if (args.isEmpty()) {
             channel.sendMessage("Args cannot be empty!").queue()
             return

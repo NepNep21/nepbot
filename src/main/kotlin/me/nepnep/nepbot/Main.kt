@@ -34,7 +34,8 @@ fun main() {
             DefaultRole(),
             JoinMessage(),
             LeaveMessage(),
-            Starboard()
+            Starboard(),
+            ThreadListener()
         )
         .setMaxReconnectDelay(config["reconnectDelay"].intValue())
 

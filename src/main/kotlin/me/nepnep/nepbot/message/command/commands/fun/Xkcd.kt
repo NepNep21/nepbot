@@ -3,15 +3,15 @@ package me.nepnep.nepbot.message.command.commands.`fun`
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.request
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class Xkcd : AbstractCommand(
     "xkcd",
     Category.FUN,
     "Returns a random xkcd comic or a specific one"
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        val channel = event.channel
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         when (args.size) {
             0 -> {
                 event.jda.httpClient.request("https://c.xkcd.com/random/comic/", {

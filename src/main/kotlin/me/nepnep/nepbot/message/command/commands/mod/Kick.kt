@@ -3,7 +3,8 @@ package me.nepnep.nepbot.message.command.commands.mod
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class Kick : AbstractCommand(
     "kick",
@@ -11,9 +12,8 @@ class Kick : AbstractCommand(
     "Kicks someone: ;kick <Mention member> <String reason>",
     Permission.KICK_MEMBERS
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val mentioned = event.message.mentionedMembers
-        val channel = event.channel
         if (mentioned.isEmpty() || args.size < 2 || mentioned.size > 1) {
             channel.sendMessage("Failed, make sure to mention one member and specify a reason").queue()
             return

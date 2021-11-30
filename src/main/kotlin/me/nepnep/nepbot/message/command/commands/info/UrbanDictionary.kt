@@ -5,8 +5,9 @@ import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.request
 import net.dv8tion.jda.api.EmbedBuilder
+import net.dv8tion.jda.api.entities.GuildMessageChannel
 import net.dv8tion.jda.api.entities.MessageEmbed
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import java.net.URLEncoder
 
 class UrbanDictionary : AbstractCommand(
@@ -14,8 +15,7 @@ class UrbanDictionary : AbstractCommand(
     Category.INFO,
     "Get a thing's definition from urban dictionary! ;urban <query>"
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
-        val channel = event.channel
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         if (args.isEmpty()) {
             channel.sendMessage("Invalid usage").queue()
             return

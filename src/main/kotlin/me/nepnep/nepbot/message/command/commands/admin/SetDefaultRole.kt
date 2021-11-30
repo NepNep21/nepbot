@@ -4,7 +4,8 @@ import me.nepnep.nepbot.database.setDefaultRole
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class SetDefaultRole : AbstractCommand(
     "setdefaultrole",
@@ -12,7 +13,7 @@ class SetDefaultRole : AbstractCommand(
     "Sets the default role: ;setdefaultrole <Mention role> or empty arguments for unsetting",
     Permission.MANAGE_ROLES
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val mentionedRoles = event.message.mentionedRoles
         val guild = event.guild
         if (mentionedRoles.isEmpty()) {

@@ -4,7 +4,8 @@ import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.JDAInfo
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import java.lang.management.ManagementFactory
 
 class BotInfo : AbstractCommand(
@@ -12,7 +13,7 @@ class BotInfo : AbstractCommand(
     Category.INFO,
     "Shows information about the bot!"
 ) {
-    override fun execute(args: List<String>, event: GuildMessageReceivedEvent) {
+    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val guilds = event.jda.guildCache
         val runtime = Runtime.getRuntime()
 
@@ -32,6 +33,6 @@ class BotInfo : AbstractCommand(
             .addField("Uptime", (uptime / 1000 / 60).toString() + " Minutes", true)
             .addField("JDA Version", jdaVersion, true)
             .build()
-        event.channel.sendMessageEmbeds(embed).queue()
+        channel.sendMessageEmbeds(embed).queue()
     }
 }
