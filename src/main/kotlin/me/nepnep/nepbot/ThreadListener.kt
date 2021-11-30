@@ -12,7 +12,8 @@ class ThreadListener : ListenerAdapter() {
     }
 
     override fun onThreadHidden(event: ThreadHiddenEvent) {
-        event.thread.removeFromBlacklist()
-        event.thread.removeFromWhitelist()
+        val thread = event.thread
+        thread.removeFromBlacklist()
+        thread.removeFromWhitelist()
     }
 }
