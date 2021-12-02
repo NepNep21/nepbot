@@ -35,7 +35,7 @@ Where:
 "reconnectDelay" is the maximum number of seconds you want JDA to wait before attempting a reconnect (min 32)  
 "type" is the type of activity ("watching", "playing", "competing", or "listening")  
 "content" is the content of the activity  
-"uncalledMessages" is whether actions in "src/main/kotlin/me/nepnep/nepbot/message/Messages.kt" should be executed 
+"uncalledMessages" is whether actions in "src/main/kotlin/me/nepnep/nepbot/message/Messages.kt" should be executed  
 "prefix" is the default prefix
 
 Make sure you have java installed, and then run the bot with "java -jar fileName.jar"
