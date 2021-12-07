@@ -19,7 +19,14 @@ class Purge : AbstractCommand(
             || !selfMember.hasPermission(channel, Permission.MESSAGE_MANAGE)
         ) {
             channel.sendMessage("Missing permission MESSAGE_HISTORY or MESSAGE_MANAGE").queue()
+            return
         }
+
+        if (args.isEmpty()) {
+            channel.sendMessage("You must enter an amount").queue()
+            return
+        }
+
         val amount = args[0].toIntOrNull()
         if (amount == null) {
             channel.sendMessage("Invalid amount").queue()
