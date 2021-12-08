@@ -29,7 +29,6 @@ object CommandRegister {
         register(RandomChimpEvent())
         register(Shut())
         register(TinyCat())
-        register(TinyRat())
         register(XmasRat())
         register(BottomCommand())
         register(Lmddgtfy())
