@@ -27,7 +27,7 @@ class CommandResponder : ListenerAdapter() {
             val invoke = split[0].lowercase()
 
             if (CommandRegister.register.containsKey(invoke)) {
-                val command = CommandRegister.register[invoke]!!
+                val command = CommandRegister.register.getValue(invoke)
 
                 if (event.member!!.hasPermission(channel, command.requiredPermission)) {
                     val args = split.subList(1, split.size)
