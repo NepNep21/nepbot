@@ -11,26 +11,21 @@ class ProfilePicture : AbstractCommand(
     "Sends the avatar url of a user: ;pfp <Mention member> | <long id> | null"
 ) {
     override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
-        val authorUrl = event.author.avatarUrl
+        val authorUrl = event.author.effectiveAvatarUrl
         val mentioned = event.message.mentionedMembers
 
-        if (args.isEmpty() && authorUrl != null) {
+        if (args.isEmpty()) {
             channel.sendMessage("$authorUrl?size=2048").queue()
             return
         }
         if (mentioned.isNotEmpty()) {
-            val mentionedUrl = mentioned[0].user.avatarUrl
-            if (mentionedUrl != null) {
-                channel.sendMessage("$mentionedUrl?size=2048").queue()
-            }
+            val mentionedUrl = mentioned[0].user.effectiveAvatarUrl
+            channel.sendMessage("$mentionedUrl?size=2048").queue()
             return
         }
         try {
             event.jda.retrieveUserById(args[0]).queue({
-                val url = it.avatarUrl
-
-                url ?: return@queue
-
+                val url = it.effectiveAvatarUrl
                 channel.sendMessage("$url?size=2048").queue()
             }) {
                 channel.sendMessage("Invalid id").queue()

@@ -31,7 +31,7 @@ class Suggestion : AbstractCommand(
 
         val embed = EmbedBuilder()
             .setTitle(author.asTag)
-            .setThumbnail(author.avatarUrl)
+            .setThumbnail(author.effectiveAvatarUrl)
             .setDescription(suggestion)
             .setFooter("ID: " + author.id)
             .build()

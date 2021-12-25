@@ -32,7 +32,7 @@ class Starboard : ListenerAdapter() {
                             val starCount = if (it.contains(author)) reaction.count - 1 else reaction.count
                             if (starCount == 3) {
                                 val builder = EmbedBuilder()
-                                    .setAuthor(author.asTag, null, author.avatarUrl)
+                                    .setAuthor(author.asTag, null, author.effectiveAvatarUrl)
                                     .setDescription("[Context](${message.jumpUrl})\n${message.contentRaw}")
                                     .setTimestamp(message.timeCreated)
                                 val attachments = message.attachments

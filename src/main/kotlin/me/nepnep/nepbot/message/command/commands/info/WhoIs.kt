@@ -12,7 +12,7 @@ import java.time.temporal.ChronoUnit
 class WhoIs : AbstractCommand(
     "whois",
     Category.INFO,
-    "Gets a user's information: ;whois <Mention member> | <long id> | nul"
+    "Gets a user's information: ;whois <Mention member> | <long id> | null"
 ) {
     override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val mentioned = event.message.mentionedMembers
@@ -42,7 +42,7 @@ class WhoIs : AbstractCommand(
 
         val id = user.id
         val tag = user.asTag
-        val avatarUrl = user.avatarUrl
+        val avatarUrl = user.effectiveAvatarUrl
 
         val timeCreated = user.timeCreated
         val sinceCreated = ChronoUnit.DAYS.between(timeCreated.toLocalDate(), now)
