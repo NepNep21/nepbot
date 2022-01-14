@@ -8,6 +8,8 @@ import okhttp3.*
 import java.io.IOException
 import java.net.URL
 
+internal val QUOTED_REGEX = "\".+?\"".toRegex()
+
 inline fun OkHttpClient.request(
     url: String,
     crossinline success: (Response) -> Unit,

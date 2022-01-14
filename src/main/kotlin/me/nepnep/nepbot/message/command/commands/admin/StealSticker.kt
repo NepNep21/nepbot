@@ -1,5 +1,6 @@
 package me.nepnep.nepbot.message.command.commands.admin
 
+import me.nepnep.nepbot.QUOTED_REGEX
 import me.nepnep.nepbot.isDiscord
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.message.command.Category
@@ -49,8 +50,7 @@ class StealSticker : AbstractCommand(
 
             val argsString = args.joinToString(" ") { if (it != url) it else "" }
 
-            val regex = "\".+?\"".toRegex()
-            val matches = regex.findAll(argsString)
+            val matches = QUOTED_REGEX.findAll(argsString)
                 .map { it.value.replace("\"", "") }
                 .toList()
             description = matches.getOrNull(0) ?: return

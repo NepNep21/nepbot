@@ -1,18 +1,23 @@
 package me.nepnep.nepbot.message.command.commands.mod
 
-import me.nepnep.nepbot.message.command.Category
+import me.nepnep.nepbot.QUOTED_REGEX
 import me.nepnep.nepbot.message.command.AbstractCommand
+import me.nepnep.nepbot.message.command.Category
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.entities.Member
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
-import net.dv8tion.jda.api.exceptions.HierarchyException
+import java.time.Duration
+import java.util.concurrent.TimeUnit
 
 class Mute : AbstractCommand(
     "mute",
     Category.MOD,
-    "Mutes someone: ;mute <Mention member> <String reason>",
-    Permission.KICK_MEMBERS
+    "Mutes someone: ;mute <Mention member> <optional Time duration> \"<String reason>\"",
+    Permission.MODERATE_MEMBERS
 ) {
+    private val validRegex = "\\b\\d{1,2}[mhd]".toRegex()
+
     override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val mentioned = event.message.mentionedMembers
 
@@ -33,29 +38,32 @@ class Mute : AbstractCommand(
         }
 
         val selfMember = guild.selfMember
-        if (!selfMember.hasPermission(Permission.MANAGE_ROLES) || !selfMember.canInteract(toMute)) {
-            channel.sendMessage(":x: I can't manage roles that user or I don't have permission to manage roles.")
-                .queue()
+        if (!selfMember.hasPermission(Permission.MODERATE_MEMBERS) || !selfMember.canInteract(toMute)) {
+            channel.sendMessage(":x: I can't timeout that user or I don't have permission to timeout.").queue()
             return
         }
 
-        val roles = guild.getRolesByName("muted", true)
+        val reason = QUOTED_REGEX.find(args.joinToString(" "))?.value?.replace("\"", "")
 
-        if (roles.isEmpty()) {
-            channel.sendMessage(":x: Unable to find role named \"Muted\" (Not case sensitive)").queue()
+        if (reason == null) {
+            channel.sendMessage(":x: Provide a reason").queue()
             return
         }
-        val muted = roles[0]
 
-        try {
-            guild.addRoleToMember(toMute, muted).queue()
-            channel.sendMessage(
-                "${event.author.asTag} muted ${toMute.user.asTag} for reason: ${
-                    args.subList(1, args.size).joinToString(" ")
-                }"
-            ).queue()
-        } catch (e: HierarchyException) {
-            channel.sendMessage(":x: I can't manage the Muted role, it is higher than my max role!").queue()
+        val timeFormat = validRegex.find(args[1])?.value
+
+        if (timeFormat != null) {
+            val last = timeFormat.last()
+            val modifier = when (last) {
+                'm' -> TimeUnit.MINUTES
+                'h' -> TimeUnit.HOURS
+                'd' -> TimeUnit.DAYS
+                else -> throw IllegalStateException("Validation regex failed")
+            }
+            toMute.timeoutFor(timeFormat.removeSuffix(last.toString()).toLong(), modifier).queue()
+        } else {
+            toMute.timeoutFor(Duration.ofDays((Member.MAX_TIME_OUT_LENGTH - 1).toLong())).queue()
         }
+        channel.sendMessage("${event.author.asTag} muted ${toMute.user.asTag} for reason: $reason").queue()
     }
 }
