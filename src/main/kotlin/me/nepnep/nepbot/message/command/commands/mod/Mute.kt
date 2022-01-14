@@ -17,6 +17,7 @@ class Mute : AbstractCommand(
     Permission.MODERATE_MEMBERS
 ) {
     private val validRegex = "\\b\\d{1,2}[mhd]".toRegex()
+    private val actualMaxTimeout = Member.MAX_TIME_OUT_LENGTH - 1
 
     override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val mentioned = event.message.mentionedMembers
@@ -60,9 +61,14 @@ class Mute : AbstractCommand(
                 'd' -> TimeUnit.DAYS
                 else -> throw IllegalStateException("Validation regex failed")
             }
-            toMute.timeoutFor(timeFormat.removeSuffix(last.toString()).toLong(), modifier).queue()
+            val amount = timeFormat.removeSuffix(last.toString()).toLong()
+            if (last == 'd' && amount > actualMaxTimeout) {
+                channel.sendMessage(":x: You can't mute members for that long").queue()
+                return
+            }
+            toMute.timeoutFor(amount, modifier).queue()
         } else {
-            toMute.timeoutFor(Duration.ofDays((Member.MAX_TIME_OUT_LENGTH - 1).toLong())).queue()
+            toMute.timeoutFor(Duration.ofDays(actualMaxTimeout.toLong())).queue()
         }
         channel.sendMessage("${event.author.asTag} muted ${toMute.user.asTag} for reason: $reason").queue()
     }
