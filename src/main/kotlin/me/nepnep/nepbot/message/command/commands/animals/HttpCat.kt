@@ -19,7 +19,7 @@ class HttpCat : AbstractCommand(
 
         val url = "https://http.cat/${args[0]}"
         event.jda.httpClient.request(url, {
-            if (it.code() == 200) {
+            if (it.code == 200) {
                 channel.sendMessage(url).queue()
             } else {
                 channel.sendMessage("https://http.cat/404").queue()

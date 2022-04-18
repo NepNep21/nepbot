@@ -15,7 +15,7 @@ class Xkcd : AbstractCommand(
         when (args.size) {
             0 -> {
                 event.jda.httpClient.request("https://c.xkcd.com/random/comic/", {
-                    channel.sendMessage(it.request().url().toString()).queue()
+                    channel.sendMessage(it.request.url.toString()).queue()
                 }) {
                     channel.sendMessage("Request failed").queue()
                 }
@@ -24,7 +24,7 @@ class Xkcd : AbstractCommand(
                 val url = "https://xkcd.com/" + args[0]
 
                 event.jda.httpClient.request(url, {
-                    if (it.code() == 200) {
+                    if (it.code == 200) {
                         channel.sendMessage(url).queue()
                     } else {
                         channel.sendMessage("Comic does not exist").queue()

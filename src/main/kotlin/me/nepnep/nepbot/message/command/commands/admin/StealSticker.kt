@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.internal.requests.Route
 import net.dv8tion.jda.internal.requests.restaction.AuditableRestActionImpl
 import net.dv8tion.jda.internal.utils.IOUtil
-import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
 import java.net.URL
 
@@ -92,7 +92,7 @@ class StealSticker : AbstractCommand(
             .addFormDataPart("name", name)
             .addFormDataPart("description", description)
             .addFormDataPart("tags", tags)
-            .addFormDataPart("file", "sticker", IOUtil.createRequestBody(MediaType.get(connection.contentType), stream))
+            .addFormDataPart("file", "sticker", IOUtil.createRequestBody(connection.contentType.toMediaType(), stream))
             .build()
         // JDA doesn't support sticker uploading in its API yet
         AuditableRestActionImpl<Unit>(event.jda, Route.post("guilds/{guildId}/stickers").compile(guild.id), data).queue(

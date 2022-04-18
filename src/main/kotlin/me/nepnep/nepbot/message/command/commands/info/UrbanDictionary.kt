@@ -24,7 +24,7 @@ class UrbanDictionary : AbstractCommand(
         val query = URLEncoder.encode(args.subList(0, args.size).joinToString(" "), "UTF-8")
 
         event.jda.httpClient.request(api + query, {
-            val json = ObjectMapper().readTree(it.body()!!.string())
+            val json = ObjectMapper().readTree(it.body!!.string())
 
             val list = json["list"]
             if (list == null) {

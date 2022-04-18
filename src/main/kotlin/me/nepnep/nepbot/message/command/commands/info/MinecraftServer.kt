@@ -22,7 +22,7 @@ class MinecraftServer : AbstractCommand(
         val server = args[0]
         val url = "https://api.mcsrvstat.us/2/$server"
         event.jda.httpClient.request(url, { response ->
-            val json = ObjectMapper().readTree(response.body()!!.string())
+            val json = ObjectMapper().readTree(response.body!!.string())
 
             val ip = json["ip"].textValue()
             val port = json["port"].intValue()
