@@ -1,5 +1,6 @@
 package me.nepnep.nepbot.message.command.commands.admin
 
+import me.nepnep.nepbot.database.BlacklistType
 import me.nepnep.nepbot.database.removeFromBlacklist
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
@@ -14,6 +15,6 @@ class RemoveLewdBlacklist : AbstractCommand(
     Permission.MANAGE_CHANNEL
 ) {
     override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
-        channel.removeFromBlacklist()
+        channel.removeFromBlacklist(BlacklistType.LEWD)
     }
 }

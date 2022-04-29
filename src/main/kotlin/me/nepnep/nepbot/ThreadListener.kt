@@ -1,5 +1,6 @@
 package me.nepnep.nepbot
 
+import me.nepnep.nepbot.database.BlacklistType
 import me.nepnep.nepbot.database.removeFromBlacklist
 import me.nepnep.nepbot.database.removeFromWhitelist
 import net.dv8tion.jda.api.events.thread.ThreadHiddenEvent
@@ -13,7 +14,9 @@ class ThreadListener : ListenerAdapter() {
 
     override fun onThreadHidden(event: ThreadHiddenEvent) {
         val thread = event.thread
-        thread.removeFromBlacklist()
+        for (type in BlacklistType.values()) {
+            thread.removeFromBlacklist(type)
+        }
         thread.removeFromWhitelist()
     }
 }

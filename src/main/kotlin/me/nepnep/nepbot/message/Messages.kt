@@ -2,6 +2,7 @@ package me.nepnep.nepbot.message
 
 import me.nepnep.nepbot.canSend
 import me.nepnep.nepbot.config
+import me.nepnep.nepbot.database.BlacklistType
 import me.nepnep.nepbot.database.getPrefix
 import me.nepnep.nepbot.database.isInBlacklist
 import net.dv8tion.jda.api.Permission
@@ -26,7 +27,7 @@ class Messages : ListenerAdapter() {
             }
 
             if (config["uncalledMessages"].booleanValue()) {
-                val shouldSendLewd = !channel.isInBlacklist()
+                val shouldSendLewd = !channel.isInBlacklist(BlacklistType.LEWD)
                 val content = message.contentRaw.lowercase()
 
                 if (content.contains("nigger") && selfMember.hasPermission(channel, Permission.MESSAGE_MANAGE)) {
@@ -46,7 +47,7 @@ class Messages : ListenerAdapter() {
                     ) {
                         channel.sendMessage("https://tenor.com/view/neptunia-gif-18952040").queue()
                     }
-                    if (content.contains("what if")) {
+                    if (content.contains("what if") && !channel.isInBlacklist(BlacklistType.TRY_IT_AND_SEE)) {
                         channel.sendMessage("https://tryitands.ee/").queue()
                     }
                 }

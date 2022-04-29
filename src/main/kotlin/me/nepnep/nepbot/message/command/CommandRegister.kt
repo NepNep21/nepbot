@@ -47,6 +47,7 @@ object CommandRegister {
         register(Poll())
         register(Prefix())
         register(StealSticker())
+        register(TryItAndSeeBlacklist())
     }
 
     private fun register(command: AbstractCommand) {
