@@ -30,10 +30,6 @@ class Messages : ListenerAdapter() {
                 val shouldSendLewd = !channel.isInBlacklist(BlacklistType.LEWD)
                 val content = message.contentRaw.lowercase()
 
-                if (content.contains("nigger") && selfMember.hasPermission(channel, Permission.MESSAGE_MANAGE)) {
-                    event.message.delete().queue()
-                }
-
                 if (canSend) {
                     if (content.contains("communism") || content.contains("socialism")) {
                         channel.sendMessage("https://www.youtube.com/watch?v=gnXUFXc2Yns&ab_channel=ComradeLuigi")
