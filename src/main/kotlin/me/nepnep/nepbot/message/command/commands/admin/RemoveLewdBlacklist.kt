@@ -14,7 +14,7 @@ class RemoveLewdBlacklist : AbstractCommand(
     "Removes the current channel from the lewd blacklist",
     Permission.MANAGE_CHANNEL
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         channel.removeFromBlacklist(BlacklistType.LEWD)
     }
 }

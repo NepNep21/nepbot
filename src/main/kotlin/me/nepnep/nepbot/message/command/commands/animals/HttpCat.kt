@@ -11,7 +11,7 @@ class HttpCat : AbstractCommand(
     Category.ANIMALS,
     "Http cats: ;http <int code>"
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         if (args.isEmpty()) {
             channel.sendMessage("Invalid usage").queue()
             return

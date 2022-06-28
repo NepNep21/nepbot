@@ -12,8 +12,8 @@ class Unmute : AbstractCommand(
     "Unmutes someone: ;unmute <Mention member>",
     Permission.MODERATE_MEMBERS
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
-        val mentioned = event.message.mentionedMembers
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+        val mentioned = event.message.mentions.members
 
         if (mentioned.isEmpty()) {
             channel.sendMessage(":x: Incorrect usage.").queue()

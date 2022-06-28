@@ -12,7 +12,7 @@ class Help : AbstractCommand(
     Category.GENERAL,
     "Help page: ;help <int page> | null"
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         if (args.isEmpty()) {
             val categories = Category.values().joinToString("\n") { it.toString() }
 

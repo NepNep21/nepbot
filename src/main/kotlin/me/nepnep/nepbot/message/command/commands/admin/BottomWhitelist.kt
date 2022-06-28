@@ -13,7 +13,7 @@ class BottomWhitelist : AbstractCommand(
     "Adds the channel to the bottom whitelist",
     Permission.MANAGE_CHANNEL
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         channel.addToWhitelist()
     }
 }

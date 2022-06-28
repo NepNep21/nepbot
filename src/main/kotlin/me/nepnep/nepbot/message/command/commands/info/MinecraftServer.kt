@@ -1,10 +1,10 @@
 package me.nepnep.nepbot.message.command.commands.info
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import me.nepnep.nepbot.message.command.Category
+import dev.minn.jda.ktx.messages.Embed
 import me.nepnep.nepbot.message.command.AbstractCommand
+import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.request
-import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.GuildMessageChannel
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
@@ -13,7 +13,7 @@ class MinecraftServer : AbstractCommand(
     Category.INFO,
     "Gets a minecraft server's info: ;mcsrv <String address>"
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         if (args.size != 1) {
             channel.sendMessage("Invalid usage").queue()
             return
@@ -53,13 +53,13 @@ class MinecraftServer : AbstractCommand(
 
             val version = json["version"].textValue()
 
-            val embed = EmbedBuilder()
-                .addField("IP/Hostname", "$ip:$port/$hostname", false)
-                .addField("MOTD", motd, false)
-                .addField("Online players/Max players", "$online/$max", false)
-                .addField("Version", version, false)
-                .setThumbnail("https://api.mcsrvstat.us/icon/$server")
-                .build()
+            val embed = Embed { 
+                field("IP/Hostname", "$ip:$port/$hostname", false)
+                field("MOTD", motd, false)
+                field("Online players/Max players", "$online/$max", false)
+                field("Version", version, false)
+                thumbnail = "https://api.mcsrvstat.us/icon/$server"
+            }
             channel.sendMessageEmbeds(embed).queue()
         }) {
             channel.sendMessage("API request failed").queue()

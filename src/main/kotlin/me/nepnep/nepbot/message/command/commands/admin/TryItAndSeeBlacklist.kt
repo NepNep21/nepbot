@@ -15,7 +15,7 @@ class TryItAndSeeBlacklist : AbstractCommand(
     "Adds/removes a channel from the \"try it and see\" blacklist",
     Permission.MANAGE_CHANNEL
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         when {
             args.isEmpty() -> {
                 channel.addToBlacklist(BlacklistType.TRY_IT_AND_SEE)

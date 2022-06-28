@@ -13,7 +13,7 @@ class BottomCommand : AbstractCommand(
     Category.FUN,
     "Encodes/Decodes to bottom: ;bottom <encode> | <decode> <String string>"
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         if (channel.isInWhitelist() && args.size >= 2) {
             val string = args.subList(1, args.size).joinToString(" ")
 

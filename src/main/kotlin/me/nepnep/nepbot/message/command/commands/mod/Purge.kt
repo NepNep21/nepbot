@@ -12,7 +12,7 @@ class Purge : AbstractCommand(
     "Purges messaages: ;purge <int amount>",
     Permission.MESSAGE_MANAGE
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         // May not be required
         val selfMember = event.guild.selfMember
         if (!selfMember.hasPermission(channel, Permission.MESSAGE_HISTORY)

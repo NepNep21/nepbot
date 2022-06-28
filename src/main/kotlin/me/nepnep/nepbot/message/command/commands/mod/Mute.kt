@@ -19,8 +19,8 @@ class Mute : AbstractCommand(
     private val validRegex = "\\b\\d{1,2}[mhd]".toRegex()
     private val actualMaxTimeout = Member.MAX_TIME_OUT_LENGTH - 1
 
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
-        val mentioned = event.message.mentionedMembers
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+        val mentioned = event.message.mentions.members
 
         if (mentioned.isEmpty() || args.size < 2) {
             channel.sendMessage(":x: Incorrect usage").queue()

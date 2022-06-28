@@ -1,5 +1,8 @@
 package me.nepnep.nepbot.message.command.commands.admin
 
+import dev.minn.jda.ktx.coroutines.await
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import me.nepnep.nepbot.QUOTED_REGEX
 import me.nepnep.nepbot.isDiscord
 import me.nepnep.nepbot.message.command.AbstractCommand
@@ -7,23 +10,20 @@ import me.nepnep.nepbot.message.command.Category
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.GuildMessageChannel
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
-import net.dv8tion.jda.internal.requests.Route
-import net.dv8tion.jda.internal.requests.restaction.AuditableRestActionImpl
-import net.dv8tion.jda.internal.utils.IOUtil
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MultipartBody
+import net.dv8tion.jda.api.exceptions.ErrorResponseException
+import net.dv8tion.jda.api.utils.FileUpload
 import java.net.URL
 
 class StealSticker : AbstractCommand(
     "stealsticker",
     Category.ADMIN,
     "Steals a sticker: ;stealsticker (<String link> \"<String description>\" \"<CommaSeparated tags>\" \"<String name>\") | <Sticker sticker>",
-    Permission.MANAGE_EMOTES_AND_STICKERS
+    Permission.MANAGE_EMOJIS_AND_STICKERS
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val guild = event.guild
 
-        if (!guild.selfMember.hasPermission(Permission.MANAGE_EMOTES_AND_STICKERS)) {
+        if (!guild.selfMember.hasPermission(Permission.MANAGE_EMOJIS_AND_STICKERS)) {
             channel.sendMessage("I can't upload stickers!").queue()
             return
         }
@@ -40,7 +40,7 @@ class StealSticker : AbstractCommand(
             return
         }
         if (hasStickers) {
-            val sticker = stickers[0]
+            val sticker = event.jda.retrieveSticker(stickers.first()).await()
             url = sticker.iconUrl
             name = sticker.name
             description = sticker.description
@@ -83,22 +83,16 @@ class StealSticker : AbstractCommand(
             return
         }
 
-        val connection = actualUrl.openConnection()
-        connection.setRequestProperty("User-Agent", "") // To fix discord file downloading weirdness
-        val stream = connection.inputStream
+        withContext(Dispatchers.IO) {
+            val connection = actualUrl.openConnection()
+            connection.setRequestProperty("User-Agent", "") // To fix discord file downloading weirdness
+            val stream = connection.inputStream
 
-        val data = MultipartBody.Builder()
-            .setType(MultipartBody.FORM)
-            .addFormDataPart("name", name)
-            .addFormDataPart("description", description)
-            .addFormDataPart("tags", tags)
-            .addFormDataPart("file", "sticker", IOUtil.createRequestBody(connection.contentType.toMediaType(), stream))
-            .build()
-        // JDA doesn't support sticker uploading in its API yet
-        AuditableRestActionImpl<Unit>(event.jda, Route.post("guilds/{guildId}/stickers").compile(guild.id), data).queue(
-            null
-        ) {
-            channel.sendMessage(it.message!!).queue()
+            try {
+                guild.createSticker(name, description, FileUpload.fromData(stream, "sticker"), tags.split(',')).await()
+            } catch (e: ErrorResponseException) {
+                channel.sendMessage(e.message!!).queue()
+            }
         }
     }
 }

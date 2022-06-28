@@ -13,8 +13,8 @@ class SetDefaultRole : AbstractCommand(
     "Sets the default role: ;setdefaultrole <Mention role> or empty arguments for unsetting",
     Permission.MANAGE_ROLES
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
-        val mentionedRoles = event.message.mentionedRoles
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+        val mentionedRoles = event.message.mentions.roles
         val guild = event.guild
         if (mentionedRoles.isEmpty()) {
             guild.setDefaultRole(null)

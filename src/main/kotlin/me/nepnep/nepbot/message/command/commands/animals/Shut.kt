@@ -10,7 +10,7 @@ class Shut : AbstractCommand(
     Category.ANIMALS,
     "Shut!!"
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         channel.sendMessage("https://shutplea.se/").queue()
     }
 }

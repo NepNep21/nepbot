@@ -11,8 +11,8 @@ class Poll : AbstractCommand(
     Category.GENERAL,
     "Gets a random answer from options: ;poll <String... options>"
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
-        if (event.message.mentionsEveryone()) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+        if (event.message.mentions.mentionsEveryone()) {
             channel.sendMessage("Nice atEveryone attempt").queue()
             return
         }

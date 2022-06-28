@@ -37,7 +37,7 @@ class RandomChimpEvent : AbstractCommand(
         "https://cdn.discordapp.com/attachments/710891361615740948/762014906039271524/video0.mp4"
     )
 
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         channel.sendMessage(monkeys[ThreadLocalRandom.current().nextInt(0, monkeys.size)]).queue()
     }
 }

@@ -13,7 +13,7 @@ class JoinMessage : AbstractCommand(
     ";joinmessage (set <long channelId> <String message (Use %s where you want the user's name to be)>) | remove",
     Permission.MANAGE_CHANNEL
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val guild = event.guild
         try {
             if (args.size >= 3 && args[0] == "set") {

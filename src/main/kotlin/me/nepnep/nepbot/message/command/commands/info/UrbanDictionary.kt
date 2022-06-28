@@ -1,10 +1,10 @@
 package me.nepnep.nepbot.message.command.commands.info
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import me.nepnep.nepbot.message.command.Category
+import dev.minn.jda.ktx.messages.Embed
 import me.nepnep.nepbot.message.command.AbstractCommand
+import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.request
-import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.GuildMessageChannel
 import net.dv8tion.jda.api.entities.MessageEmbed
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
@@ -15,13 +15,13 @@ class UrbanDictionary : AbstractCommand(
     Category.INFO,
     "Get a thing's definition from urban dictionary! ;urban <query>"
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         if (args.isEmpty()) {
             channel.sendMessage("Invalid usage").queue()
             return
         }
         val api = "https://api.urbandictionary.com/v0/define?term="
-        val query = URLEncoder.encode(args.subList(0, args.size).joinToString(" "), "UTF-8")
+        val query = URLEncoder.encode(args.subList(0, args.size).joinToString(" "), "UTF-8") // Wtf kotlin
 
         event.jda.httpClient.request(api + query, {
             val json = ObjectMapper().readTree(it.body!!.string())
@@ -46,10 +46,10 @@ class UrbanDictionary : AbstractCommand(
                 return@request
             }
 
-            val embed = EmbedBuilder()
-                .addField("Definition:", definition, false)
-                .addField("Example:", example, false)
-                .build()
+            val embed = Embed { 
+                field("Definition:", definition, false)
+                field("Example:", example, false)
+            }
 
             if (embed.isSendable) {
                 channel.sendMessageEmbeds(embed).queue()

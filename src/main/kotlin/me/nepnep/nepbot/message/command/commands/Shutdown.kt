@@ -12,7 +12,7 @@ class Shutdown : AbstractCommand(
     Category.GENERAL,
     "Shuts down the bot"
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val operator = config["operator"].longValue()
 
         if (event.author.idLong != operator) {

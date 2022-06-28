@@ -1,5 +1,6 @@
 package me.nepnep.nepbot.message.command.commands.admin
 
+import dev.minn.jda.ktx.coroutines.await
 import me.nepnep.nepbot.database.getDefaultRole
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
@@ -13,7 +14,7 @@ class GiveDefaultRole : AbstractCommand(
     "Gives the default role to all members without one",
     Permission.MANAGE_ROLES
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val guild = event.guild
         val role = guild.getDefaultRole() ?: return
 
@@ -22,11 +23,10 @@ class GiveDefaultRole : AbstractCommand(
             channel.sendMessage("I cannot interact with the default role").queue()
             return
         }
-        guild.loadMembers().onSuccess {
-            for (member in it) {
-                if (member.roles.isEmpty() && selfMember.canInteract(member)) {
-                    guild.addRoleToMember(member, role).queue()
-                }
+        val members = guild.loadMembers().await()
+        for (member in members) {
+            if (member.roles.isEmpty() && selfMember.canInteract(member)) {
+                guild.addRoleToMember(member, role).queue()
             }
         }
     }

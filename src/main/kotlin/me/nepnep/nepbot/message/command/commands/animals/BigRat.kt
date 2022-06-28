@@ -10,7 +10,7 @@ class BigRat : AbstractCommand(
     Category.ANIMALS,
     "A big rat"
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         channel.sendMessage("https://bigrat.monster/").queue()
     }
 }

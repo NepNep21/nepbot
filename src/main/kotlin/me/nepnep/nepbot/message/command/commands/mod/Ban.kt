@@ -12,8 +12,8 @@ class Ban : AbstractCommand(
     "Bans someone: ;ban <Mention member> <String reason>",
     Permission.BAN_MEMBERS
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
-        val mentioned = event.message.mentionedMembers
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+        val mentioned = event.message.mentions.members
         if (mentioned.isEmpty() || args.size < 2 || mentioned.size > 1) {
             channel.sendMessage("Failed, make sure to mention one member and specify a reason").queue()
             return

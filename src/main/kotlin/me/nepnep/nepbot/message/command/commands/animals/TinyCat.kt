@@ -10,7 +10,7 @@ class TinyCat : AbstractCommand(
     Category.ANIMALS,
     "A tiny cat"
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         channel.sendMessage("http://tinycat.monster/").queue()
     }
 }

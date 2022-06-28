@@ -13,7 +13,7 @@ class Prefix : AbstractCommand(
     "Sets/unsets the prefix: ;prefix (set <String prefix>) | unset",
     Permission.MANAGE_CHANNEL
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         if (args.isEmpty()) {
             channel.sendMessage("Args cannot be empty!").queue()
             return
@@ -22,7 +22,7 @@ class Prefix : AbstractCommand(
         when (args[0]) {
             "set" -> {
                 if (args.size < 2) {
-                    channel.sendMessage("You must specify a prefix when using 'set'")
+                    channel.sendMessage("You must specify a prefix when using 'set'").queue()
                     return
                 }
                 guild.setPrefix(args[1])

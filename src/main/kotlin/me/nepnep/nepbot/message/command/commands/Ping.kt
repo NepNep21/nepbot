@@ -10,7 +10,7 @@ class Ping : AbstractCommand(
     Category.GENERAL,
     "Pong!"
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         channel.sendMessage("${event.jda.gatewayPing}ms").queue()
     }
 }

@@ -3,10 +3,11 @@ package me.nepnep.nepbot
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.mongodb.ConnectionString
 import com.mongodb.client.MongoClients
-import me.nepnep.nepbot.message.Messages
+import dev.minn.jda.ktx.events.CoroutineEventListener
+import dev.minn.jda.ktx.events.listener
+import dev.minn.jda.ktx.jdabuilder.default
+import dev.minn.jda.ktx.jdabuilder.intents
 import me.nepnep.nepbot.message.command.CommandRegister
-import me.nepnep.nepbot.message.command.CommandResponder
-import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.utils.MemberCachePolicy
@@ -24,36 +25,28 @@ fun main() {
     val token = System.getenv("BOT_TOKEN")
 
     CommandRegister.registerCommands()
+    
+    val jda = default(token) {
+        intents += GatewayIntent.GUILD_MEMBERS
+        setMemberCachePolicy(MemberCachePolicy.ALL)
+        setMaxReconnectDelay(config["reconnectDelay"].intValue())
 
-    val builder = JDABuilder.createDefault(token)
-        .enableIntents(GatewayIntent.GUILD_MEMBERS)
-        .setMemberCachePolicy(MemberCachePolicy.ALL)
-        .addEventListeners(
-            CommandResponder(),
-            Messages(),
-            DefaultRole(),
-            JoinMessage(),
-            LeaveMessage(),
-            Starboard(),
-            ThreadListener()
-        )
-        .setMaxReconnectDelay(config["reconnectDelay"].intValue())
-
-    val activity = config["activity"]
-    val content = activity["content"].textValue()
-    when (activity["type"].textValue()) {
-        "watching" -> {
-            builder.setActivity(Activity.watching(content))
-        }
-        "competing" -> {
-            builder.setActivity(Activity.competing(content))
-        }
-        "listening" -> {
-            builder.setActivity(Activity.listening(content))
-        }
-        "playing" -> {
-            builder.setActivity(Activity.playing(content))
-        }
+        val activity = config["activity"]
+        val content = activity["content"].textValue()
+        setActivity(when (activity["content"].textValue()) {
+            "watching" -> Activity.watching(content)
+            "competing" -> Activity.competing(content)
+            "listening" -> Activity.listening(content)
+            "playing" -> Activity.playing(content)
+            else -> null
+        })
     }
-    builder.build()
+    jda.listener(consumer = CoroutineEventListener::commandResponder)
+    jda.listener(consumer = CoroutineEventListener::defaultRole)
+    jda.listener(consumer = CoroutineEventListener::joinMessage)
+    jda.listener(consumer = CoroutineEventListener::leaveMessage)
+    jda.listener(consumer = CoroutineEventListener::onThreadRevealed)
+    jda.listener(consumer = CoroutineEventListener::onThreadHidden)
+    jda.listener(consumer = CoroutineEventListener::onMessageReactionAdd)
+    jda.listener(consumer = CoroutineEventListener::messages)
 }

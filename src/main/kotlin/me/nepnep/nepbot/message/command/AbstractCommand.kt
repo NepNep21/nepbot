@@ -10,5 +10,5 @@ abstract class AbstractCommand(
     val description: String,
     val requiredPermission: Permission = Permission.MESSAGE_SEND
 ) {
-    abstract fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel)
+    abstract suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel)
 }

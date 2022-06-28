@@ -11,7 +11,7 @@ class Xkcd : AbstractCommand(
     Category.FUN,
     "Returns a random xkcd comic or a specific one"
 ) {
-    override fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
+    override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         when (args.size) {
             0 -> {
                 event.jda.httpClient.request("https://c.xkcd.com/random/comic/", {
