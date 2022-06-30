@@ -28,7 +28,6 @@ class WhoIs : AbstractCommand(
                 val user = event.jda.retrieveUserById(args[0]).await()
                 sendEmbed(user, event)
             } catch (e: RuntimeException) { //  ErrorResponseException | NumberFormatException
-                e.printStackTrace()
                 channel.sendMessage("Invalid id!").queue()
             }
             return
