@@ -23,7 +23,6 @@ object CommandRegister {
         register(Steal())
         register(BigRat())
         register(HttpCat())
-        register(RandomChimpEvent())
         register(Shut())
         register(TinyCat())
         register(XmasRat())
