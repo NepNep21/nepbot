@@ -25,7 +25,7 @@ class ProfilePicture : AbstractCommand(
             return
         }
         try {
-            val url = event.jda.retrieveUserById(args[0]).await()
+            val url = event.jda.retrieveUserById(args[0]).await().effectiveAvatarUrl
             channel.sendMessage("$url?size=2048").queue()
         } catch (e: RuntimeException) { // ErrorResponseException | NumberFormatException
             channel.sendMessage("Invalid id").queue()
