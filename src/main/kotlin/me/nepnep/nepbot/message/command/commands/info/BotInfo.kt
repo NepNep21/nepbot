@@ -30,7 +30,7 @@ class BotInfo : AbstractCommand(
             field("Total Guilds", guildAmount.toString())
             field("Total Users", userAmount.toString())
             field("RAM Usage", (memoryUsed / 1000000).toString() + "MB")
-            field((uptime / 3600000).toString() + " Hours")
+            field("Uptime", (uptime / 3600000).toString() + " Hours")
             field("JDA Version", jdaVersion)
         }
         channel.sendMessageEmbeds(embed).queue()
