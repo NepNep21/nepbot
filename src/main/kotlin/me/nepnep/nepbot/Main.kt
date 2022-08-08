@@ -33,7 +33,7 @@ fun main() {
 
         val activity = config["activity"]
         val content = activity["content"].textValue()
-        setActivity(when (activity["content"].textValue()) {
+        setActivity(when (activity["type"].textValue()) {
             "watching" -> Activity.watching(content)
             "competing" -> Activity.competing(content)
             "listening" -> Activity.listening(content)
