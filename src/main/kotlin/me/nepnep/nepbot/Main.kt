@@ -14,8 +14,8 @@ import net.dv8tion.jda.api.utils.MemberCachePolicy
 import java.io.File
 
 internal val mongoClient = MongoClients.create(ConnectionString(System.getenv("MONGODB_URL")))
+internal val mongoGuilds = mongoClient.getDatabase("Nepbot").getCollection("Guilds")
 internal val config = ObjectMapper().readTree(File("config.json"))
-internal const val DB_NAME = "Nepbot"
 internal val DEFAULT_PREFIX = config["prefix"].textValue()
 
 fun main() {
