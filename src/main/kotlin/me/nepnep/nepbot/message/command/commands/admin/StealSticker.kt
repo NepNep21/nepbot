@@ -1,12 +1,11 @@
 package me.nepnep.nepbot.message.command.commands.admin
 
 import dev.minn.jda.ktx.coroutines.await
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import me.nepnep.nepbot.QUOTED_REGEX
 import me.nepnep.nepbot.isDiscord
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.message.command.Category
+import me.nepnep.nepbot.runIO
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.GuildMessageChannel
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
@@ -83,15 +82,15 @@ class StealSticker : AbstractCommand(
             return
         }
 
-        withContext(Dispatchers.IO) {
+        runIO {
             val connection = actualUrl.openConnection()
             connection.setRequestProperty("User-Agent", "") // To fix discord file downloading weirdness
-            val stream = connection.inputStream
-
-            try {
-                guild.createSticker(name, description, FileUpload.fromData(stream, "sticker"), tags.split(',')).await()
-            } catch (e: ErrorResponseException) {
-                channel.sendMessage(e.message!!).queue()
+            connection.inputStream.use {
+                try {
+                    guild.createSticker(name, description, FileUpload.fromData(it, "sticker"), tags.split(',')).await()
+                } catch (e: ErrorResponseException) {
+                    channel.sendMessage(e.message!!).queue()
+                }
             }
         }
     }

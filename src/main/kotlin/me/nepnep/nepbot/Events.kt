@@ -48,7 +48,7 @@ suspend fun CoroutineEventListener.commandResponder(event: MessageReceivedEvent)
     }
 }
 
-fun CoroutineEventListener.defaultRole(event: GuildMemberJoinEvent) {
+suspend fun CoroutineEventListener.defaultRole(event: GuildMemberJoinEvent) {
     val guild = event.guild
     val role = guild.getDefaultRole() ?: return
 
@@ -62,7 +62,7 @@ fun CoroutineEventListener.defaultRole(event: GuildMemberJoinEvent) {
     }
 }
 
-fun CoroutineEventListener.joinMessage(event: GuildMemberJoinEvent) {
+suspend fun CoroutineEventListener.joinMessage(event: GuildMemberJoinEvent) {
     val guild = event.guild
     val joinDetails = guild.getJoinDetails() ?: return
     val channel = guild.getTextChannelById(joinDetails["channel"].longValue()) ?: return
@@ -89,7 +89,7 @@ fun CoroutineEventListener.onThreadRevealed(event: ThreadRevealedEvent) {
     event.thread.join().queue()
 }
 
-fun CoroutineEventListener.onThreadHidden(event: ThreadHiddenEvent) {
+suspend fun CoroutineEventListener.onThreadHidden(event: ThreadHiddenEvent) {
     val thread = event.thread
     for (type in BlacklistType.values()) {
         thread.removeFromBlacklist(type)
@@ -138,7 +138,7 @@ suspend fun CoroutineEventListener.onMessageReactionAdd(event: MessageReactionAd
     }
 }
 
-fun CoroutineEventListener.messages(event: MessageReceivedEvent) {
+suspend fun CoroutineEventListener.messages(event: MessageReceivedEvent) {
     if (!event.isFromGuild) {
         return
     }

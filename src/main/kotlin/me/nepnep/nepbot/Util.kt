@@ -1,5 +1,8 @@
 package me.nepnep.nepbot
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import net.dv8tion.jda.api.Permission
 import net.dv8tion.jda.api.entities.GuildMessageChannel
 import net.dv8tion.jda.api.entities.Member
@@ -10,20 +13,22 @@ import java.net.URL
 
 internal val QUOTED_REGEX = "\".+?\"".toRegex()
 
-inline fun OkHttpClient.request(
+suspend inline fun OkHttpClient.request(
     url: String,
     crossinline success: (Response) -> Unit,
     crossinline failure: (IOException) -> Unit
 ) {
-    newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
-        override fun onFailure(call: Call, e: IOException) {
-            failure(e)
-        }
+    runIO {
+        newCall(Request.Builder().url(url).build()).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                failure(e)
+            }
 
-        override fun onResponse(call: Call, response: Response) {
-            response.use(success)
-        }
-    })
+            override fun onResponse(call: Call, response: Response) {
+                response.use(success)
+            }
+        })
+    }
 }
 
 fun URL.isDiscord(): Boolean {
@@ -42,4 +47,9 @@ fun Member.canSend(channel: GuildMessageChannel): Boolean {
     } else {
         hasPermission(channel, Permission.MESSAGE_SEND)
     }
+}
+
+// Micro optimizations my beloved
+suspend inline fun <T> runIO(crossinline call: suspend CoroutineScope.() -> T): T = withContext(Dispatchers.IO) {
+    return@withContext call()
 }
