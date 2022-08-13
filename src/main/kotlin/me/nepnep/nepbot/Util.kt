@@ -49,7 +49,5 @@ fun Member.canSend(channel: GuildMessageChannel): Boolean {
     }
 }
 
-// Micro optimizations my beloved
-suspend inline fun <T> runIO(crossinline call: suspend CoroutineScope.() -> T): T = withContext(Dispatchers.IO) {
-    return@withContext call()
-}
+// Not inline as withContext itself isn't inline, making a possible performance benefit questinable
+suspend fun <T> runIO(call: suspend CoroutineScope.() -> T): T = withContext(Dispatchers.IO, call)

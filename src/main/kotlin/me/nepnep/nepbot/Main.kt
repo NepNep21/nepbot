@@ -27,7 +27,7 @@ fun main() {
     CommandRegister.registerCommands()
     
     val jda = default(token) {
-        intents += GatewayIntent.GUILD_MEMBERS
+        intents += listOf(GatewayIntent.GUILD_MEMBERS, GatewayIntent.MESSAGE_CONTENT)
         setMemberCachePolicy(MemberCachePolicy.ALL)
         setMaxReconnectDelay(config["reconnectDelay"].intValue())
 
