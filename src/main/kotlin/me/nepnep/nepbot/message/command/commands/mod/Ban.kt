@@ -3,8 +3,9 @@ package me.nepnep.nepbot.message.command.commands.mod
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
+import java.util.concurrent.TimeUnit
 
 class Ban : AbstractCommand(
     "ban",
@@ -40,7 +41,7 @@ class Ban : AbstractCommand(
                     }
                 }
             }
-            guild.ban(toBan, 0, reason).queue()
+            guild.ban(toBan, 0, TimeUnit.DAYS).reason(reason).queue()
         }
     }
 }

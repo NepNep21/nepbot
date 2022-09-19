@@ -4,7 +4,7 @@ import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.CommandRegister
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.EmbedBuilder
-import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class Help : AbstractCommand(

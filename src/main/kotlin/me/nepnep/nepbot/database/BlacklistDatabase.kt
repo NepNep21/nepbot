@@ -4,9 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.mongodb.client.model.Filters
 import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.model.Updates
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import me.nepnep.nepbot.mongoGuilds
-import me.nepnep.nepbot.runIO
-import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel
 
 enum class BlacklistType(val key: String) {
     LEWD("lewd"),
@@ -14,7 +15,7 @@ enum class BlacklistType(val key: String) {
 }
 
 suspend fun GuildMessageChannel.addToBlacklist(type: BlacklistType) {
-    runIO {
+    withContext(Dispatchers.IO) {
         mongoGuilds.updateOne(
             Filters.eq("guildId", guild.idLong),
             Updates.addToSet("blacklist.${type.key}", idLong),
@@ -24,7 +25,7 @@ suspend fun GuildMessageChannel.addToBlacklist(type: BlacklistType) {
 }
 
 suspend fun GuildMessageChannel.isInBlacklist(type: BlacklistType): Boolean {
-    val document = runIO { mongoGuilds.find(Filters.eq("guildId", guild.idLong)) }.first() ?: return false
+    val document = withContext(Dispatchers.IO) { mongoGuilds.find(Filters.eq("guildId", guild.idLong)) }.first() ?: return false
 
     val iterator = ObjectMapper().readTree(document.toJson())
         ?.get("blacklist")
@@ -40,7 +41,7 @@ suspend fun GuildMessageChannel.isInBlacklist(type: BlacklistType): Boolean {
 }
 
 suspend fun GuildMessageChannel.removeFromBlacklist(type: BlacklistType) {
-    runIO {
+    withContext(Dispatchers.IO) {
         mongoGuilds.updateOne(Filters.eq("guildId", guild.idLong), Updates.pull("blacklist.${type.key}", idLong))
     }
 }

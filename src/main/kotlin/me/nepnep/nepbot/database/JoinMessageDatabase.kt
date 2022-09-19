@@ -5,8 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.mongodb.client.model.Filters
 import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.model.Updates
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import me.nepnep.nepbot.mongoGuilds
-import me.nepnep.nepbot.runIO
 import net.dv8tion.jda.api.entities.Guild
 
 suspend fun Guild.setJoinDetails(channel: Long, message: String) {
@@ -15,7 +16,7 @@ suspend fun Guild.setJoinDetails(channel: Long, message: String) {
         Updates.set("joinMessage.message", message)
     )
 
-    runIO {
+    withContext(Dispatchers.IO) {
         mongoGuilds.updateOne(
             Filters.eq("guildId", idLong),
             update,
@@ -25,7 +26,7 @@ suspend fun Guild.setJoinDetails(channel: Long, message: String) {
 }
 
 suspend fun Guild.getJoinDetails(): JsonNode? {
-    val first = runIO { mongoGuilds.find(Filters.eq("guildId", idLong)) }.first()
+    val first = withContext(Dispatchers.IO) { mongoGuilds.find(Filters.eq("guildId", idLong)) }.first()
 
     first ?: return null
 

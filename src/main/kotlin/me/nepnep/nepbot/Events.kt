@@ -7,7 +7,7 @@ import dev.minn.jda.ktx.messages.Embed
 import me.nepnep.nepbot.database.*
 import me.nepnep.nepbot.message.command.CommandRegister
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel
 import net.dv8tion.jda.api.entities.emoji.Emoji
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent
 import net.dv8tion.jda.api.events.guild.member.GuildMemberRemoveEvent

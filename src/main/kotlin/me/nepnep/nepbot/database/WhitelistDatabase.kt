@@ -4,12 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.mongodb.client.model.Filters
 import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.model.Updates
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import me.nepnep.nepbot.mongoGuilds
-import me.nepnep.nepbot.runIO
-import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel
 
 suspend fun GuildMessageChannel.addToWhitelist() {
-    runIO {
+    withContext(Dispatchers.IO) {
         mongoGuilds.updateOne(
             Filters.eq("guildId", guild.idLong),
             Updates.addToSet("whitelist.bottom", idLong),
@@ -19,7 +20,7 @@ suspend fun GuildMessageChannel.addToWhitelist() {
 }
 
 suspend fun GuildMessageChannel.isInWhitelist(): Boolean {
-    val document = runIO { mongoGuilds.find(Filters.eq("guildId", guild.idLong)) }.first() ?: return false
+    val document = withContext(Dispatchers.IO) { mongoGuilds.find(Filters.eq("guildId", guild.idLong)) }.first() ?: return false
 
     val iterator = ObjectMapper().readTree(document.toJson())
         ?.get("whitelist")
@@ -35,7 +36,7 @@ suspend fun GuildMessageChannel.isInWhitelist(): Boolean {
 }
 
 suspend fun GuildMessageChannel.removeFromWhitelist() {
-    runIO {
+    withContext(Dispatchers.IO) {
         mongoGuilds.updateOne(Filters.eq("guildId", guild.idLong), Updates.pull("whitelist.bottom", idLong))
     }
 }

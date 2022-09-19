@@ -3,21 +3,22 @@ package me.nepnep.nepbot.database
 import com.mongodb.client.model.Filters
 import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.model.Updates
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import me.nepnep.nepbot.mongoGuilds
-import me.nepnep.nepbot.runIO
 import net.dv8tion.jda.api.entities.Guild
 import net.dv8tion.jda.api.entities.Role
 
 suspend fun Guild.setDefaultRole(role: Role?) {
     val filter = Filters.eq("guildId", idLong)
 
-    runIO {
+    withContext(Dispatchers.IO) {
         if (role == null) {
             mongoGuilds.updateOne(
                 filter,
                 Updates.unset("defaultRole")
             )
-            return@runIO
+            return@withContext 
         }
 
         mongoGuilds.updateOne(
@@ -29,7 +30,7 @@ suspend fun Guild.setDefaultRole(role: Role?) {
 }
 
 suspend fun Guild.getDefaultRole(): Role? {
-    val name = runIO { mongoGuilds.find(Filters.eq("guildId", idLong)) }
+    val name = withContext(Dispatchers.IO) { mongoGuilds.find(Filters.eq("guildId", idLong)) }
         .first()
         ?.get("defaultRole", String::class.java) ?: return null
 

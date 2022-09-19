@@ -4,7 +4,7 @@ import me.nepnep.nepbot.database.setDefaultRole
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.message.command.AbstractCommand
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 
 class SetDefaultRole : AbstractCommand(

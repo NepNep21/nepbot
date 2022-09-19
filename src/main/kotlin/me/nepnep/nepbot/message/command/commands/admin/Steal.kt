@@ -1,12 +1,13 @@
 package me.nepnep.nepbot.message.command.commands.admin
 
 import dev.minn.jda.ktx.coroutines.await
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import me.nepnep.nepbot.isDiscord
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.message.command.Category
-import me.nepnep.nepbot.runIO
 import net.dv8tion.jda.api.Permission
-import net.dv8tion.jda.api.entities.GuildMessageChannel
+import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel
 import net.dv8tion.jda.api.entities.Icon
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.exceptions.ErrorResponseException
@@ -43,7 +44,7 @@ class Steal : AbstractCommand(
                 return
             }
 
-            runIO {
+            withContext(Dispatchers.IO) {
                 val connection = url.openConnection()
                 connection.setRequestProperty("User-Agent", "")
                 connection.inputStream.use {

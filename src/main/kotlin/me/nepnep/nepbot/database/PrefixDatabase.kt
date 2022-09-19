@@ -3,22 +3,23 @@ package me.nepnep.nepbot.database
 import com.mongodb.client.model.Filters
 import com.mongodb.client.model.UpdateOptions
 import com.mongodb.client.model.Updates
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import me.nepnep.nepbot.DEFAULT_PREFIX
 import me.nepnep.nepbot.mongoGuilds
-import me.nepnep.nepbot.runIO
 import net.dv8tion.jda.api.entities.Guild
 
 suspend fun Guild.getPrefix(): String {
-    val guild = runIO { mongoGuilds.find(Filters.eq("guildId", idLong)) }.first()
+    val guild = withContext(Dispatchers.IO) { mongoGuilds.find(Filters.eq("guildId", idLong)) }.first()
     return guild?.get("prefix", String::class.java) ?: DEFAULT_PREFIX
 }
 
 suspend fun Guild.setPrefix(prefix: String?) {
     val filter = Filters.eq("guildId", idLong)
-    runIO {
+    withContext(Dispatchers.IO) {
         if (prefix == null) {
             mongoGuilds.updateOne(filter, Updates.unset("prefix"))
-            return@runIO
+            return@withContext 
         }
         mongoGuilds.updateOne(filter, Updates.set("prefix", prefix), UpdateOptions().upsert(true))
     }
