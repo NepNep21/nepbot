@@ -13,7 +13,7 @@ class Shutdown : AbstractCommand(
     "Shuts down the bot"
 ) {
     override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
-        val operator = config["operator"].longValue()
+        val operator = config.operator
 
         if (event.author.idLong != operator) {
             channel.sendMessage("You do not have permission to use this command").queue()

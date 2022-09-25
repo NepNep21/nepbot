@@ -1,11 +1,13 @@
 package me.nepnep.nepbot.message.command
 
+import me.nepnep.nepbot.config
 import me.nepnep.nepbot.message.command.commands.*
 import me.nepnep.nepbot.message.command.commands.`fun`.BottomCommand
 import me.nepnep.nepbot.message.command.commands.`fun`.Lmddgtfy
 import me.nepnep.nepbot.message.command.commands.`fun`.Xkcd
 import me.nepnep.nepbot.message.command.commands.admin.*
 import me.nepnep.nepbot.message.command.commands.animals.*
+import me.nepnep.nepbot.message.command.commands.`fun`.UwURandom
 import me.nepnep.nepbot.message.command.commands.info.*
 import me.nepnep.nepbot.message.command.commands.mod.*
 
@@ -47,6 +49,9 @@ object CommandRegister {
         register(Prefix())
         register(StealSticker())
         register(TryItAndSeeBlacklist())
+        if (config.uwurandom) {
+            register(UwURandom())
+        }
     }
 
     private fun register(command: AbstractCommand) {

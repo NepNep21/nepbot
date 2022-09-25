@@ -12,11 +12,12 @@ import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.utils.MemberCachePolicy
 import java.io.File
+import java.lang.IllegalStateException
 
 internal val mongoClient = MongoClients.create(ConnectionString(System.getenv("MONGODB_URL")))
 internal val mongoGuilds = mongoClient.getDatabase("Nepbot").getCollection("Guilds")
-internal val config = ObjectMapper().readTree(File("config.json"))
-internal val DEFAULT_PREFIX = config["prefix"].textValue()
+internal val config = ObjectMapper().readValue(File("config.json"), Config::class.java)
+internal val DEFAULT_PREFIX = config.prefix
 
 fun main() {
     Runtime.getRuntime().addShutdownHook(Thread {
@@ -29,11 +30,11 @@ fun main() {
     val jda = default(token) {
         intents += listOf(GatewayIntent.GUILD_MEMBERS, GatewayIntent.MESSAGE_CONTENT)
         setMemberCachePolicy(MemberCachePolicy.ALL)
-        setMaxReconnectDelay(config["reconnectDelay"].intValue())
+        setMaxReconnectDelay(config.reconnectDelay)
 
-        val activity = config["activity"]
-        val content = activity["content"].textValue()
-        setActivity(when (activity["type"].textValue()) {
+        val activity = config.activity
+        val content = activity.content
+        setActivity(when (activity.type) {
             "watching" -> Activity.watching(content)
             "competing" -> Activity.competing(content)
             "listening" -> Activity.listening(content)
@@ -49,4 +50,24 @@ fun main() {
     jda.listener(consumer = CoroutineEventListener::onThreadHidden)
     jda.listener(consumer = CoroutineEventListener::onMessageReactionAdd)
     jda.listener(consumer = CoroutineEventListener::messages)
+}
+
+class Config {
+    lateinit var activity: Activity
+    var operator = -1L; get() {
+        if (field == -1L) {
+            throw IllegalStateException("Uninitialized operator")
+        }
+        
+        return field
+    }
+    val reconnectDelay = 32
+    val uncalledMessages = false
+    val prefix = ";"
+    val uwurandom = false
+    
+    class Activity {
+        lateinit var content: String
+        lateinit var type: String
+    }
 }

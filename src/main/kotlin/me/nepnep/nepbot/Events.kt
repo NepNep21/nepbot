@@ -153,7 +153,7 @@ suspend fun CoroutineEventListener.messages(event: MessageReceivedEvent) {
             channel.sendMessage("My prefix for this guild is ${guild.getPrefix()}").queue()
         }
 
-        if (config["uncalledMessages"].booleanValue()) {
+        if (config.uncalledMessages) {
             val shouldSendLewd = !channel.isInBlacklist(BlacklistType.LEWD)
             val content = message.contentRaw.lowercase()
 
