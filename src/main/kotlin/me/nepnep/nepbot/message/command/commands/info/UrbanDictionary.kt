@@ -1,12 +1,12 @@
 package me.nepnep.nepbot.message.command.commands.info
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import dev.minn.jda.ktx.messages.Embed
+import me.nepnep.nepbot.mapper
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.request
-import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel
 import net.dv8tion.jda.api.entities.MessageEmbed
+import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import java.net.URLEncoder
 
@@ -24,7 +24,7 @@ class UrbanDictionary : AbstractCommand(
         val query = URLEncoder.encode(args.subList(0, args.size).joinToString(" "), "UTF-8") // Wtf kotlin
 
         event.jda.httpClient.request(api + query, {
-            val json = ObjectMapper().readTree(it.body!!.string())
+            val json = mapper.readTree(it.body!!.string())
 
             val list = json["list"]
             if (list == null) {

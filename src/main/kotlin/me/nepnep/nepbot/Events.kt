@@ -1,4 +1,3 @@
-@file:Suppress("unused") // Unused receiver
 package me.nepnep.nepbot
 
 import dev.minn.jda.ktx.coroutines.await
@@ -65,8 +64,8 @@ suspend fun CoroutineEventListener.defaultRole(event: GuildMemberJoinEvent) {
 suspend fun CoroutineEventListener.joinMessage(event: GuildMemberJoinEvent) {
     val guild = event.guild
     val joinDetails = guild.getJoinDetails() ?: return
-    val channel = guild.getTextChannelById(joinDetails["channel"].longValue()) ?: return
-    val message = joinDetails["message"].textValue()
+    val channel = guild.getTextChannelById(joinDetails.channel) ?: return
+    val message = joinDetails.message
 
     if (guild.selfMember.hasPermission(channel, Permission.MESSAGE_SEND)) {
         channel.sendMessage(message.replace("%s", event.user.asMention)).queue()

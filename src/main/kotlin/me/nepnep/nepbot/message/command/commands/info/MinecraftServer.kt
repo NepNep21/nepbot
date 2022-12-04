@@ -1,7 +1,7 @@
 package me.nepnep.nepbot.message.command.commands.info
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import dev.minn.jda.ktx.messages.Embed
+import me.nepnep.nepbot.mapper
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.request
@@ -22,7 +22,7 @@ class MinecraftServer : AbstractCommand(
         val server = args[0]
         val url = "https://api.mcsrvstat.us/2/$server"
         event.jda.httpClient.request(url, { response ->
-            val json = ObjectMapper().readTree(response.body!!.string())
+            val json = mapper.readTree(response.body!!.string())
 
             val ip = json["ip"].textValue()
             val port = json["port"].intValue()

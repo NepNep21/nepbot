@@ -2,7 +2,9 @@ package me.nepnep.nepbot
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.mongodb.ConnectionString
+import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoClients
+import com.mongodb.client.MongoCollection
 import dev.minn.jda.ktx.events.CoroutineEventListener
 import dev.minn.jda.ktx.events.listener
 import dev.minn.jda.ktx.jdabuilder.default
@@ -11,13 +13,15 @@ import me.nepnep.nepbot.message.command.CommandRegister
 import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.utils.MemberCachePolicy
+import org.bson.Document
 import java.io.File
 import java.lang.IllegalStateException
 
-internal val mongoClient = MongoClients.create(ConnectionString(System.getenv("MONGODB_URL")))
-internal val mongoGuilds = mongoClient.getDatabase("Nepbot").getCollection("Guilds")
-internal val config = ObjectMapper().readValue(File("config.json"), Config::class.java)
-internal val DEFAULT_PREFIX = config.prefix
+val mongoClient: MongoClient = MongoClients.create(ConnectionString(System.getenv("MONGODB_URL")))
+val mongoGuilds: MongoCollection<Document> = mongoClient.getDatabase("Nepbot").getCollection("Guilds")
+val mapper = ObjectMapper()
+val config: Config = mapper.readValue(File("config.json"), Config::class.java)
+val DEFAULT_PREFIX = config.prefix
 
 fun main() {
     Runtime.getRuntime().addShutdownHook(Thread {
