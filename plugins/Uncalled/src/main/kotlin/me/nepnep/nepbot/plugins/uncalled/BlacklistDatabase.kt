@@ -1,4 +1,4 @@
-package me.nepnep.nepbot.database
+package me.nepnep.nepbot.plugins.uncalled
 
 import com.mongodb.client.model.Filters
 import com.mongodb.client.model.UpdateOptions

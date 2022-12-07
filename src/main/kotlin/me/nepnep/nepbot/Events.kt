@@ -88,14 +88,6 @@ fun CoroutineEventListener.onThreadRevealed(event: ThreadRevealedEvent) {
     event.thread.join().queue()
 }
 
-suspend fun CoroutineEventListener.onThreadHidden(event: ThreadHiddenEvent) {
-    val thread = event.thread
-    for (type in BlacklistType.values()) {
-        thread.removeFromBlacklist(type)
-    }
-    thread.removeFromWhitelist()
-}
-
 suspend fun CoroutineEventListener.onMessageReactionAdd(event: MessageReactionAddEvent) {
     if (!event.isFromGuild) {
         return
@@ -147,32 +139,11 @@ suspend fun CoroutineEventListener.messages(event: MessageReceivedEvent) {
     val channel = event.channel as GuildMessageChannel
     val canSend = selfMember.canSend(channel)
 
-    if (!(event.isWebhookMessage || event.author.isBot)) {
-        if (message.mentions.members.contains(selfMember) && canSend) {
-            channel.sendMessage("My prefix for this guild is ${guild.getPrefix()}").queue()
-        }
-
-        if (config.uncalledMessages) {
-            val shouldSendLewd = !channel.isInBlacklist(BlacklistType.LEWD)
-            val content = message.contentRaw.lowercase()
-
-            if (canSend) {
-                if (content.contains("communism") || content.contains("socialism")) {
-                    channel.sendMessage("https://www.youtube.com/watch?v=gnXUFXc2Yns&ab_channel=ComradeLuigi")
-                        .queue()
-                }
-                if ((content.contains("lewd")
-                            || content.contains("sex")
-                            || content.contains("cum")
-                            || content.contains("semen")
-                            || content.contains("penis")) && shouldSendLewd
-                ) {
-                    channel.sendMessage("https://tenor.com/view/neptunia-gif-18952040").queue()
-                }
-                if (content.contains("what if") && !channel.isInBlacklist(BlacklistType.TRY_IT_AND_SEE)) {
-                    channel.sendMessage("https://tryitands.ee/").queue()
-                }
-            }
-        }
+    if (!(event.isWebhookMessage || event.author.isBot) && message.mentions.members.contains(selfMember) && canSend) {
+        channel.sendMessage("My prefix for this guild is ${guild.getPrefix()}").queue()
     }
+}
+
+suspend fun CoroutineEventListener.onThreadHidden(event: ThreadHiddenEvent) {
+    event.thread.removeFromWhitelist()
 }

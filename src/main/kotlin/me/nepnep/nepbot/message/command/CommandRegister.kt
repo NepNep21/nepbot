@@ -18,9 +18,7 @@ object CommandRegister {
         register(BottomWhitelist())
         register(GiveDefaultRole())
         register(JoinMessage())
-        register(LewdBlacklist())
         register(RemoveBottomWhitelist())
-        register(RemoveLewdBlacklist())
         register(SetDefaultRole())
         register(Steal())
         register(BigRat())
@@ -48,13 +46,20 @@ object CommandRegister {
         register(Poll())
         register(Prefix())
         register(StealSticker())
-        register(TryItAndSeeBlacklist())
+        register(Reload())
+        register(Load())
+        register(Unload())
+        register(Info())
         if (config.uwurandom) {
             register(UwURandom())
         }
     }
 
-    private fun register(command: AbstractCommand) {
+    fun register(command: AbstractCommand) {
         register[command.invoke] = command
+    }
+    
+    fun remove(command: AbstractCommand) {
+        register.remove(command.invoke)
     }
 }

@@ -1,10 +1,11 @@
 plugins {
     id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.6.21'
+    id 'maven-publish'
 }
 
 group 'me.nepnep.nepbot'
-version '5.2.0'
+version '6.0.0'
 
 repositories {
     mavenCentral()
@@ -12,14 +13,14 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.dv8tion:JDA:5.0.0-alpha.19'
-    implementation 'org.mongodb:mongodb-driver-sync:4.7.1'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.2'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2.2'
-    implementation 'ch.qos.logback:logback-classic:1.3.0-alpha5'
-    implementation 'com.github.bottom-software-foundation:bottom-java:v2.1.0'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
-    implementation 'com.github.MinnDevelopment:jda-ktx:0.9.5-alpha.19'
+    api 'net.dv8tion:JDA:5.0.0-beta.1'
+    api 'org.mongodb:mongodb-driver-sync:4.7.1'
+    api 'com.fasterxml.jackson.core:jackson-core:2.13.2'
+    api 'com.fasterxml.jackson.core:jackson-databind:2.13.2.2'
+    api 'ch.qos.logback:logback-classic:1.3.0-alpha5'
+    api 'com.github.bottom-software-foundation:bottom-java:v2.1.0'
+    api 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+    api 'com.github.MinnDevelopment:jda-ktx:0.10.0-beta.1'
 }
 
 jar {
@@ -28,12 +29,17 @@ jar {
                 'Main-Class': 'me.nepnep.nepbot.MainKt'
         )
     }
+}
+
+tasks.register("fatJar", Jar) {
     from {
         configurations
                 .runtimeClasspath
                 .findAll { !it.name.endsWith('pom') }
                 .collect { it.isDirectory() ? it : zipTree(it) }
     }
+
+    classifier = 'fat'
 }
 
 compileKotlin {
@@ -41,3 +47,29 @@ compileKotlin {
         jvmTarget = "1.8"
     }
 }
+
+publishing {
+    repositories {
+        maven { 
+            url 'https://mvn.femboyfor.sale/nepbot' 
+            credentials {
+                username System.getenv("REPO_USERNAME")
+                password System.getenv("REPO_KEY")
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+    
+    publications {
+        maven(MavenPublication) {
+            groupId = 'me.nepnep'
+            artifactId = 'nepbot'
+            version = project.version
+            from components.java
+        }
+    }
+}
+
+build.dependsOn fatJar

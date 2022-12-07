@@ -1,5 +1,4 @@
-logs/
 build/
 .gradle/
 .idea/
-config.json
+run/

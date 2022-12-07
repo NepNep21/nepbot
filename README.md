@@ -25,7 +25,6 @@ Create a file in the same directory as the bot, and create a file called "config
     "type": "watching",
     "content": "Nepbot be made"
   },
-  "uncalledMessages": false,
   "prefix": ";",
   "uwurandom": false
 }
@@ -36,7 +35,6 @@ Where:
 "reconnectDelay" is the maximum number of seconds you want JDA to wait before attempting a reconnect (min 32)  
 "type" is the type of activity ("watching", "playing", "competing", or "listening")  
 "content" is the content of the activity  
-"uncalledMessages" is whether actions in "src/main/kotlin/me/nepnep/nepbot/message/Messages.kt" should be executed  
 "prefix" is the default prefix  
 "uwurandom" is whether to enable the /dev/uwurandom command  
 

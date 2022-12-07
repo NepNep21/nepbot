@@ -37,10 +37,8 @@ class Help : AbstractCommand(
 
         val builder = EmbedBuilder()
         when (page) {
+            // FIXME: Plugins
             Category.values().size -> {
-                builder.setDescription("Communism\n\nOh my how lewd\n\nWhat if?")
-            }
-            Category.values().size - 1 -> {
                 builder.setDescription("JoinMessage\n\nDefaultRole\n\nLeaveMessage\n\nStarboard")
             }
             else -> {

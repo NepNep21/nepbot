@@ -10,6 +10,8 @@ import dev.minn.jda.ktx.events.listener
 import dev.minn.jda.ktx.jdabuilder.default
 import dev.minn.jda.ktx.jdabuilder.intents
 import me.nepnep.nepbot.message.command.CommandRegister
+import me.nepnep.nepbot.plugin.PluginManager
+import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.entities.Activity
 import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.utils.MemberCachePolicy
@@ -22,6 +24,7 @@ val mongoGuilds: MongoCollection<Document> = mongoClient.getDatabase("Nepbot").g
 val mapper = ObjectMapper()
 val config: Config = mapper.readValue(File("config.json"), Config::class.java)
 val DEFAULT_PREFIX = config.prefix
+lateinit var jda: JDA
 
 fun main() {
     Runtime.getRuntime().addShutdownHook(Thread {
@@ -31,7 +34,7 @@ fun main() {
 
     CommandRegister.registerCommands()
     
-    val jda = default(token) {
+    jda = default(token) {
         intents += listOf(GatewayIntent.GUILD_MEMBERS, GatewayIntent.MESSAGE_CONTENT)
         setMemberCachePolicy(MemberCachePolicy.ALL)
         setMaxReconnectDelay(config.reconnectDelay)
@@ -51,9 +54,11 @@ fun main() {
     jda.listener(consumer = CoroutineEventListener::joinMessage)
     jda.listener(consumer = CoroutineEventListener::leaveMessage)
     jda.listener(consumer = CoroutineEventListener::onThreadRevealed)
-    jda.listener(consumer = CoroutineEventListener::onThreadHidden)
     jda.listener(consumer = CoroutineEventListener::onMessageReactionAdd)
     jda.listener(consumer = CoroutineEventListener::messages)
+    jda.listener(consumer = CoroutineEventListener::onThreadHidden)
+    
+    PluginManager.loadAll()
 }
 
 class Config {
@@ -66,7 +71,6 @@ class Config {
         return field
     }
     val reconnectDelay = 32
-    val uncalledMessages = false
     val prefix = ";"
     val uwurandom = false
     

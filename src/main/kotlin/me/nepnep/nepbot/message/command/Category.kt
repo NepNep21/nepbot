@@ -7,6 +7,5 @@ enum class Category {
     INFO,
     MOD,
     GENERAL,
-    EVENTS,
-    MESSAGE
+    EVENTS
 }

@@ -1,8 +1,5 @@
-package me.nepnep.nepbot.message.command.commands.admin
+package me.nepnep.nepbot.plugins.uncalled
 
-import me.nepnep.nepbot.database.BlacklistType
-import me.nepnep.nepbot.database.addToBlacklist
-import me.nepnep.nepbot.database.removeFromBlacklist
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.message.command.Category
 import net.dv8tion.jda.api.Permission
