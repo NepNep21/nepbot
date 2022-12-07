@@ -23,9 +23,12 @@ jobs:
       - name: Move plugins
         run: mkdir -p out/plugins && mv -t out/plugins ./plugins/*/build/libs/* && rm -rf plugins && mv out/plugins plugins
 
+      - name: Move jar
+        run: cd build/libs && ls *-fat.jar | sed -r 's/nepbot-(.*)-fat\.jar/\1/' | xargs bash -c 'mv *fat.jar ../../nepbot-$0-fat.jar'
+
       - name: Archive artifact
         uses: actions/upload-artifact@v2
         with:
           path: |
-            build/libs/*-fat.jar
+            *-fat.jar
             plugins
