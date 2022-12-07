@@ -20,8 +20,12 @@ jobs:
       - name: Build
         run: ./gradlew build
 
+      - name: Move plugins
+        run: mkdir -p out/plugins && mv -t out/plugins ./plugins/*/build/libs/*
+
       - name: Archive artifact
         uses: actions/upload-artifact@v2
         with:
-          name: artifact
-          path: build/libs
+          path: |
+            build/libs
+            out/plugins
