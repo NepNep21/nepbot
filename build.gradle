@@ -48,6 +48,9 @@ tasks.register("fatJar", Jar) {
                 'Main-Class': 'me.nepnep.nepbot.MainKt'
         )
     }
+
+    dependsOn compileJava
+    duplicatesStrategy = 'EXCLUDE'
 }
 
 compileKotlin {
