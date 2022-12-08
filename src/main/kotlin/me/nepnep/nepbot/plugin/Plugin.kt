@@ -27,6 +27,5 @@ open class Plugin {
 
     protected inline fun <reified T : GenericEvent> addListener(crossinline it: suspend CoroutineEventListener.(T) -> Unit) {
         listeners.add(jda.listener(consumer = it))
-        println("nya")
     }
 }
