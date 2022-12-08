@@ -32,12 +32,14 @@ jar {
 }
 
 tasks.register("fatJar", Jar) {
-    from {
-        configurations
+    from(
+        [configurations
                 .runtimeClasspath
                 .findAll { !it.name.endsWith('pom') }
-                .collect { it.isDirectory() ? it : zipTree(it) }
-    }
+                .collect { it.isDirectory() ? it : zipTree(it) },
+         sourceSets.main.output.files // Wonky
+        ]
+    )
 
     classifier = 'fat'
 
