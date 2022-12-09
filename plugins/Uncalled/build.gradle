@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'me.nepnep:nepbot:6.0.0'
+    implementation 'me.nepnep:nepbot:6.0.1'
 }
 
 compileKotlin {
