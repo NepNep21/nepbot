@@ -50,6 +50,7 @@ tasks.register("fatJar", Jar) {
     }
 
     dependsOn compileJava
+    dependsOn processResources
     duplicatesStrategy = 'EXCLUDE'
 }
 
