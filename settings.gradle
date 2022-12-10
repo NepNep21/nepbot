@@ -1,3 +1,5 @@
 rootProject.name = 'nepbot'
 include 'uncalled'
 project(':uncalled').projectDir = file('plugins/Uncalled')
+include 'uwurandom'
+project(':uwurandom').projectDir = file('plugins/UwURandom')

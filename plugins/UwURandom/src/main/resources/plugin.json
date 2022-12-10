@@ -1,0 +1,6 @@
+{
+  "name": "uwurandom",
+  "description": "Interface for /dev/uwurandom",
+  "version": "1.0.0",
+  "main": "me.nepnep.nepbot.plugins.uwurandom.UwURandomPlugin"
+}

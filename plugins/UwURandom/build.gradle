@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+group 'me.nepnep.nepbot.plugins.uwurandom'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://mvn.femboyfor.sale/nepbot' }
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'me.nepnep:nepbot:6.0.1'
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}

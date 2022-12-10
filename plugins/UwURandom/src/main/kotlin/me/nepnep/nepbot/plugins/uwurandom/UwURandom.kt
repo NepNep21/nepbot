@@ -1,4 +1,4 @@
-package me.nepnep.nepbot.message.command.commands.`fun`
+package me.nepnep.nepbot.plugins.uwurandom
 
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.message.command.Category

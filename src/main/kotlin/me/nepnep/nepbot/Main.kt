@@ -72,7 +72,6 @@ class Config {
     }
     val reconnectDelay = 32
     val prefix = ";"
-    val uwurandom = false
     
     class Activity {
         lateinit var content: String

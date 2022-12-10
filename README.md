@@ -25,8 +25,7 @@ Create a file in the same directory as the bot, and create a file called "config
     "type": "watching",
     "content": "Nepbot be made"
   },
-  "prefix": ";",
-  "uwurandom": false
+  "prefix": ";"
 }
 ```
 
@@ -36,6 +35,5 @@ Where:
 "type" is the type of activity ("watching", "playing", "competing", or "listening")  
 "content" is the content of the activity  
 "prefix" is the default prefix  
-"uwurandom" is whether to enable the /dev/uwurandom command  
 
 Make sure you have java installed, and then run the bot with "java -jar fileName.jar"
