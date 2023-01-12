@@ -14,7 +14,7 @@ private suspend fun CoroutineEventListener.messages(event: MessageReceivedEvent)
     val shouldSendLewd = !channel.isInBlacklist(BlacklistType.LEWD)
     val content = event.message.contentRaw.lowercase()
 
-    if (event.guild.selfMember.canSend(channel)) {
+    if (event.guild.selfMember.canSend(channel) && !event.author.isBot) {
         if (content.contains("communism") || content.contains("socialism")) {
             channel.sendMessage("https://www.youtube.com/watch?v=gnXUFXc2Yns&ab_channel=ComradeLuigi")
                 .queue()
@@ -25,7 +25,7 @@ private suspend fun CoroutineEventListener.messages(event: MessageReceivedEvent)
                     || content.contains("semen")
                     || content.contains("penis")) && shouldSendLewd
         ) {
-            channel.sendMessage("https://tenor.com/view/neptunia-gif-18952040").queue()
+            channel.sendMessage("https://tenor.com/view/neptune-how-lewd-gif-11721711").queue()
         }
         if (content.contains("what if") && !channel.isInBlacklist(BlacklistType.TRY_IT_AND_SEE)) {
             channel.sendMessage("https://tryitands.ee/").queue()

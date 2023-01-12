@@ -2,3 +2,5 @@ build/
 .gradle/
 .idea/
 run/
+config.json
+logs/
