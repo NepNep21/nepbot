@@ -11,7 +11,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 class BottomCommand : AbstractCommand(
     "bottom",
     Category.FUN,
-    "Encodes/Decodes to bottom: ;bottom <encode> | <decode> <String string>"
+    "Encodes/Decodes to bottom: ;bottom encode | decode <String string>"
 ) {
     override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         if (channel.isInWhitelist() && args.size >= 2) {
