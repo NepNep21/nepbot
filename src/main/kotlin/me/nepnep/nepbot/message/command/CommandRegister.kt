@@ -21,8 +21,6 @@ object CommandRegister {
         register(Steal())
         register(BigRat())
         register(HttpCat())
-        register(Shut())
-        register(TinyCat())
         register(XmasRat())
         register(BottomCommand())
         register(Lmddgtfy())
