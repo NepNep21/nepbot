@@ -7,12 +7,15 @@ import net.dv8tion.jda.api.JDAInfo
 import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import java.lang.management.ManagementFactory
+import kotlin.math.ceil
 
 class BotInfo : AbstractCommand(
     "botinfo",
     Category.INFO,
     "Shows information about the bot!"
 ) {
+    private val day = 1000 * 60 * 60 * 24
+    
     override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val guilds = event.jda.guildCache
         val runtime = Runtime.getRuntime()
@@ -30,7 +33,8 @@ class BotInfo : AbstractCommand(
             field("Total Guilds", guildAmount.toString())
             field("Total Users", userAmount.toString())
             field("RAM Usage", (memoryUsed / 1000000).toString() + "MB")
-            field("Uptime", (uptime / 3600000).toString() + " Hours")
+            val dayValue = ceil(uptime.toFloat() / day).toInt()
+            field("Uptime", dayValue.toString() + if (dayValue == 1) " Day" else " Days")
             field("JDA Version", jdaVersion)
         }
         channel.sendMessageEmbeds(embed).queue()
