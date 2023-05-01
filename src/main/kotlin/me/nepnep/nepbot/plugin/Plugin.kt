@@ -6,10 +6,9 @@ import me.nepnep.nepbot.jda
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.message.command.CommandRegister
 import net.dv8tion.jda.api.events.GenericEvent
-import java.net.URLClassLoader
 
 open class Plugin {
-    val loader = javaClass.classLoader as URLClassLoader
+    val loader = javaClass.classLoader as PluginLoader
     lateinit var info: PluginInfo
     lateinit var path: String
     

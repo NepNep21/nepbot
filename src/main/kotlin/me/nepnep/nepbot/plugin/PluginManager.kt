@@ -4,11 +4,13 @@ import me.nepnep.nepbot.mapper
 import java.io.File
 import java.net.URLClassLoader
 
+typealias PluginLoader = URLClassLoader
+
 object PluginManager {
     private val plugins = mutableMapOf<String, Plugin>()
     
     fun load(file: File) {
-        val loader = URLClassLoader(arrayOf(file.toURI().toURL()))
+        val loader = PluginLoader(arrayOf(file.toURI().toURL()))
         val info = mapper.readValue(loader.getResourceAsStream("plugin.json"), PluginInfo::class.java)
 
         if (plugins.contains(info.name)) {
