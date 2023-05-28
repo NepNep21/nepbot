@@ -9,15 +9,20 @@ import dev.minn.jda.ktx.events.CoroutineEventListener
 import dev.minn.jda.ktx.events.listener
 import dev.minn.jda.ktx.jdabuilder.default
 import dev.minn.jda.ktx.jdabuilder.intents
+import kotlinx.coroutines.*
 import me.nepnep.nepbot.message.command.CommandRegister
+import me.nepnep.nepbot.music.MusicManager
 import me.nepnep.nepbot.plugin.PluginManager
 import net.dv8tion.jda.api.JDA
 import net.dv8tion.jda.api.entities.Activity
+import net.dv8tion.jda.api.events.GenericEvent
+import net.dv8tion.jda.api.events.session.ReadyEvent
 import net.dv8tion.jda.api.requests.GatewayIntent
 import net.dv8tion.jda.api.utils.MemberCachePolicy
 import org.bson.Document
 import java.io.File
-import java.lang.IllegalStateException
+import kotlin.time.DurationUnit
+import kotlin.time.toDuration
 
 val mongoClient: MongoClient = MongoClients.create(ConnectionString(System.getenv("MONGODB_URL")))
 val mongoGuilds: MongoCollection<Document> = mongoClient.getDatabase("Nepbot").getCollection("Guilds")
@@ -48,7 +53,14 @@ fun main() {
             "playing" -> Activity.playing(content)
             else -> null
         })
+        
+        addEventListeners(ReadyListener)
     }
+    
+    Runtime.getRuntime().addShutdownHook(Thread {
+        ReadyListener.cancel()
+    })
+    
     jda.listener(consumer = CoroutineEventListener::commandResponder)
     jda.listener(consumer = CoroutineEventListener::defaultRole)
     jda.listener(consumer = CoroutineEventListener::joinMessage)
@@ -59,6 +71,29 @@ fun main() {
     jda.listener(consumer = CoroutineEventListener::onThreadHidden)
     
     PluginManager.loadAll()
+}
+
+private object ReadyListener : CoroutineEventListener {
+    private var job: Job? = null
+    override suspend fun onEvent(event: GenericEvent) {
+        if (event is ReadyEvent) {
+            job = coroutineScope {
+                launch {
+                    while (isActive) {
+                        MusicManager.players.filter {
+                            val player = it.value
+                            return@filter (player.getVoiceChannel()?.members?.isEmpty() ?: true)
+                        }.forEach { MusicManager.players.remove(it.key) }
+                        delay(1.toDuration(DurationUnit.MINUTES))
+                    }
+                }
+            }
+        }
+    }
+
+    override fun cancel() {
+        job?.cancel()
+    }
 }
 
 class Config {

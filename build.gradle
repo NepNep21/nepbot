@@ -9,11 +9,12 @@ version '6.0.1'
 
 repositories {
     mavenCentral()
+    maven { url 'https://m2.dv8tion.net/releases' }
     maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-    api 'net.dv8tion:JDA:5.0.0-beta.1'
+    api 'net.dv8tion:JDA:5.0.0-beta.9'
     api 'org.mongodb:mongodb-driver-sync:4.7.1'
     api 'com.fasterxml.jackson.core:jackson-core:2.13.2'
     api 'com.fasterxml.jackson.core:jackson-databind:2.13.2.2'
@@ -21,6 +22,8 @@ dependencies {
     api 'com.github.bottom-software-foundation:bottom-java:v2.1.0'
     api 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
     api 'com.github.MinnDevelopment:jda-ktx:0.10.0-beta.1'
+    // Because of age restriction error
+    api 'com.github.Walkyst:lavaplayer:0184357ef3'
 }
 
 jar {
