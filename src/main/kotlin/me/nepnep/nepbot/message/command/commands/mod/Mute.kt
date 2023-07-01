@@ -70,6 +70,6 @@ class Mute : AbstractCommand(
         } else {
             toMute.timeoutFor(Duration.ofDays(actualMaxTimeout.toLong())).queue()
         }
-        channel.sendMessage("${event.author.asTag} muted ${toMute.user.asTag} for reason: $reason").queue()
+        channel.sendMessage("${event.author.name} muted ${toMute.user.name} for reason: $reason").queue()
     }
 }

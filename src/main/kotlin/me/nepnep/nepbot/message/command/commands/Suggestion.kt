@@ -31,7 +31,7 @@ class Suggestion : AbstractCommand(
         val author = event.author
 
         val embed = Embed { 
-            title = author.asTag
+            title = author.name
             thumbnail = author.effectiveAvatarUrl
             description = suggestion
             footer("ID: " + author.id)

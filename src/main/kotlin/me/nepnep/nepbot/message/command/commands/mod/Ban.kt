@@ -29,9 +29,9 @@ class Ban : AbstractCommand(
             && selfMember.canInteract(toBan)
             && selfMember.hasPermission(Permission.BAN_MEMBERS)
         ) {
-            val authorTag = author.asTag
+            val authorTag = author.name
             val toBanUser = toBan.user
-            val toBanTag = toBanUser.asTag
+            val toBanTag = toBanUser.name
             channel.sendMessage("$authorTag banned $toBanTag for reason: $reason").queue()
 
             if (!toBanUser.isBot) {

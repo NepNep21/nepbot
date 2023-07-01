@@ -28,9 +28,9 @@ class Kick : AbstractCommand(
             && selfMember.canInteract(toKick)
             && selfMember.hasPermission(Permission.KICK_MEMBERS)
         ) {
-            val authorTag = author.asTag
+            val authorTag = author.name
             val toKickUser = toKick.user
-            val toKickTag = toKickUser.asTag
+            val toKickTag = toKickUser.name
             channel.sendMessage("$authorTag kicked $toKickTag for reason: $reason").queue()
 
             if (!toKickUser.isBot) {

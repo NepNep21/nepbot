@@ -40,7 +40,7 @@ class WhoIs : AbstractCommand(
         val now = LocalDate.now()
 
         val id = user.id
-        val tag = user.asTag
+        val tag = user.name
         val avatarUrl = user.effectiveAvatarUrl
 
         val timeCreated = user.timeCreated

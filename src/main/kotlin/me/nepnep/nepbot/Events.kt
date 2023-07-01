@@ -79,7 +79,7 @@ fun CoroutineEventListener.leaveMessage(event: GuildMemberRemoveEvent) {
     if (channels.isNotEmpty()) {
         val channel = channels[0]
         if (guild.selfMember.hasPermission(channel, Permission.MESSAGE_SEND)) {
-            channel.sendMessage("${event.user.asTag} just left the server, goodbye.").queue()
+            channel.sendMessage("${event.user.effectiveName} just left the server, goodbye.").queue()
         }
     }
 }
@@ -113,7 +113,7 @@ suspend fun CoroutineEventListener.onMessageReactionAdd(event: MessageReactionAd
                 if (starCount == 3) {
                     val embed = Embed { 
                         author { 
-                            name = author.asTag
+                            name = author.name
                             url = author.effectiveAvatarUrl
                         }
                         description = "[Context](${message.jumpUrl})\n${message.contentRaw}"

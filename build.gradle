@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    api 'net.dv8tion:JDA:5.0.0-beta.9'
+    api 'net.dv8tion:JDA:5.0.0-beta.12'
     api 'org.mongodb:mongodb-driver-sync:4.7.1'
     api 'com.fasterxml.jackson.core:jackson-core:2.13.2'
     api 'com.fasterxml.jackson.core:jackson-databind:2.13.2.2'

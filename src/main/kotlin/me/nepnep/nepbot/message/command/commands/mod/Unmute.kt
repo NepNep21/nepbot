@@ -36,6 +36,6 @@ class Unmute : AbstractCommand(
         }
 
         toUnmute.removeTimeout().queue()
-        channel.sendMessage("Unmuted ${toUnmute.user.asTag}.").queue()
+        channel.sendMessage("Unmuted ${toUnmute.user.name}.").queue()
     }
 }
