@@ -6,7 +6,6 @@ enum class Category {
     FUN,
     INFO,
     MOD,
-    MUSIC,
     GENERAL,
     EVENTS
 }

@@ -1,6 +1,7 @@
 package me.nepnep.nepbot.message.command.commands
 
 import me.nepnep.nepbot.config
+import me.nepnep.nepbot.jda
 import me.nepnep.nepbot.message.command.AbstractCommand
 import me.nepnep.nepbot.message.command.Category
 import me.nepnep.nepbot.plugin.PluginManager
