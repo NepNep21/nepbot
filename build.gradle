@@ -4,8 +4,8 @@ plugins {
     id 'maven-publish'
 }
 
-group 'me.nepnep.nepbot'
-version '6.0.1'
+group 'com.github.NepNep21'
+version '7.0.0'
 
 repositories {
     mavenCentral()
@@ -60,28 +60,12 @@ compileKotlin {
     }
 }
 
+build.dependsOn fatJar
+
 publishing {
-    repositories {
-        maven { 
-            url 'https://mvn.femboyfor.sale/nepbot' 
-            credentials {
-                username System.getenv("REPO_USERNAME")
-                password System.getenv("REPO_KEY")
-            }
-            authentication {
-                basic(BasicAuthentication)
-            }
-        }
-    }
-    
     publications {
         maven(MavenPublication) {
-            groupId = 'me.nepnep'
-            artifactId = 'nepbot'
-            version = project.version
             from components.java
         }
     }
 }
-
-build.dependsOn fatJar
