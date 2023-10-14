@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'com.github.NepNep21'
-version '7.0.0'
+version '7.0.1'
 
 repositories {
     mavenCentral()

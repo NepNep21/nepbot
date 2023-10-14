@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.NepNep21:nepbot:v7.0.0'
+    implementation 'com.github.NepNep21:nepbot:v7.0.1'
 }
 
 compileKotlin {
