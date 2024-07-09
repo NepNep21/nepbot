@@ -18,12 +18,12 @@ class Steal : AbstractCommand(
     "steal",
     Category.ADMIN,
     "Steals an emote: ;steal <String url> <String name>",
-    Permission.MANAGE_EMOJIS_AND_STICKERS
+    Permission.MANAGE_GUILD_EXPRESSIONS
 ) {
     override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val guild = event.guild
 
-        if (!guild.selfMember.hasPermission(Permission.MANAGE_EMOJIS_AND_STICKERS)) {
+        if (!guild.selfMember.hasPermission(Permission.MANAGE_GUILD_EXPRESSIONS)) {
             channel.sendMessage("Insufficient bot permissions!").queue()
             return
         }

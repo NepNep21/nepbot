@@ -18,12 +18,12 @@ class StealSticker : AbstractCommand(
     "stealsticker",
     Category.ADMIN,
     "Steals a sticker: ;stealsticker (<String link> \"<String description>\" \"<CommaSeparated tags>\" \"<String name>\") | <Sticker sticker>",
-    Permission.MANAGE_EMOJIS_AND_STICKERS
+    Permission.MANAGE_GUILD_EXPRESSIONS
 ) {
     override suspend fun execute(args: List<String>, event: MessageReceivedEvent, channel: GuildMessageChannel) {
         val guild = event.guild
 
-        if (!guild.selfMember.hasPermission(Permission.MANAGE_EMOJIS_AND_STICKERS)) {
+        if (!guild.selfMember.hasPermission(Permission.MANAGE_GUILD_EXPRESSIONS)) {
             channel.sendMessage("I can't upload stickers!").queue()
             return
         }
